@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110E29E6178A30D7008E7FA8 /* arrivals.html in Resources */ = {isa = PBXBuildFile; fileRef = 110E29CB178A30D7008E7FA8 /* arrivals.html */; };
+		110E29E7178A30D7008E7FA8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 110E29CC178A30D7008E7FA8 /* config.xml */; };
+		110E29E8178A30D7008E7FA8 /* cordova.js in Sources */ = {isa = PBXBuildFile; fileRef = 110E29CD178A30D7008E7FA8 /* cordova.js */; };
+		110E29E9178A30D7008E7FA8 /* arrivals.css in Resources */ = {isa = PBXBuildFile; fileRef = 110E29CF178A30D7008E7FA8 /* arrivals.css */; };
+		110E29EA178A30D7008E7FA8 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29D1178A30D7008E7FA8 /* logo.png */; };
+		110E29EB178A30D7008E7FA8 /* arrivals.js in Sources */ = {isa = PBXBuildFile; fileRef = 110E29D3178A30D7008E7FA8 /* arrivals.js */; };
+		110E29EC178A30D7008E7FA8 /* icon-57-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29D7178A30D7008E7FA8 /* icon-57-2x.png */; };
+		110E29ED178A30D7008E7FA8 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29D8178A30D7008E7FA8 /* icon-57.png */; };
+		110E29EE178A30D7008E7FA8 /* icon-72-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29D9178A30D7008E7FA8 /* icon-72-2x.png */; };
+		110E29EF178A30D7008E7FA8 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29DA178A30D7008E7FA8 /* icon-72.png */; };
+		110E29F0178A30D7008E7FA8 /* screen-ipad-landscape-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29DD178A30D7008E7FA8 /* screen-ipad-landscape-2x.png */; };
+		110E29F1178A30D7008E7FA8 /* screen-ipad-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29DE178A30D7008E7FA8 /* screen-ipad-landscape.png */; };
+		110E29F2178A30D7008E7FA8 /* screen-ipad-portrait-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29DF178A30D7008E7FA8 /* screen-ipad-portrait-2x.png */; };
+		110E29F3178A30D7008E7FA8 /* screen-ipad-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29E0178A30D7008E7FA8 /* screen-ipad-portrait.png */; };
+		110E29F4178A30D7008E7FA8 /* screen-iphone-landscape-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29E1178A30D7008E7FA8 /* screen-iphone-landscape-2x.png */; };
+		110E29F5178A30D7008E7FA8 /* screen-iphone-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29E2178A30D7008E7FA8 /* screen-iphone-landscape.png */; };
+		110E29F6178A30D7008E7FA8 /* screen-iphone-portrait-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29E3178A30D7008E7FA8 /* screen-iphone-portrait-2x.png */; };
+		110E29F7178A30D7008E7FA8 /* screen-iphone-portrait-568h-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29E4178A30D7008E7FA8 /* screen-iphone-portrait-568h-2x.png */; };
+		110E29F8178A30D7008E7FA8 /* screen-iphone-portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 110E29E5178A30D7008E7FA8 /* screen-iphone-portrait.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -67,6 +86,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110E29CB178A30D7008E7FA8 /* arrivals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = arrivals.html; sourceTree = "<group>"; };
+		110E29CC178A30D7008E7FA8 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		110E29CD178A30D7008E7FA8 /* cordova.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = cordova.js; sourceTree = "<group>"; };
+		110E29CF178A30D7008E7FA8 /* arrivals.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = arrivals.css; sourceTree = "<group>"; };
+		110E29D1178A30D7008E7FA8 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		110E29D3178A30D7008E7FA8 /* arrivals.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = arrivals.js; sourceTree = "<group>"; };
+		110E29D7178A30D7008E7FA8 /* icon-57-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57-2x.png"; sourceTree = "<group>"; };
+		110E29D8178A30D7008E7FA8 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
+		110E29D9178A30D7008E7FA8 /* icon-72-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72-2x.png"; sourceTree = "<group>"; };
+		110E29DA178A30D7008E7FA8 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		110E29DD178A30D7008E7FA8 /* screen-ipad-landscape-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-ipad-landscape-2x.png"; sourceTree = "<group>"; };
+		110E29DE178A30D7008E7FA8 /* screen-ipad-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-ipad-landscape.png"; sourceTree = "<group>"; };
+		110E29DF178A30D7008E7FA8 /* screen-ipad-portrait-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-ipad-portrait-2x.png"; sourceTree = "<group>"; };
+		110E29E0178A30D7008E7FA8 /* screen-ipad-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-ipad-portrait.png"; sourceTree = "<group>"; };
+		110E29E1178A30D7008E7FA8 /* screen-iphone-landscape-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-iphone-landscape-2x.png"; sourceTree = "<group>"; };
+		110E29E2178A30D7008E7FA8 /* screen-iphone-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-iphone-landscape.png"; sourceTree = "<group>"; };
+		110E29E3178A30D7008E7FA8 /* screen-iphone-portrait-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-iphone-portrait-2x.png"; sourceTree = "<group>"; };
+		110E29E4178A30D7008E7FA8 /* screen-iphone-portrait-568h-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-iphone-portrait-568h-2x.png"; sourceTree = "<group>"; };
+		110E29E5178A30D7008E7FA8 /* screen-iphone-portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-iphone-portrait.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,8 +114,7 @@
 		1F766FE013BBADB100FB74C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = "CordovaLib/CordovaLib.xcodeproj"; sourceTree = "<group>"; };
-		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
+		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF5B4109A6A2B0062928A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		301BF5B6109A6A2B0062928A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		301BF5B8109A6A2B0062928A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -158,6 +195,97 @@
 			path = BartRtIOS/Classes;
 			sourceTree = SOURCE_ROOT;
 		};
+		110E29CA178A30D7008E7FA8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				110E29CB178A30D7008E7FA8 /* arrivals.html */,
+				110E29CC178A30D7008E7FA8 /* config.xml */,
+				110E29CD178A30D7008E7FA8 /* cordova.js */,
+				110E29CE178A30D7008E7FA8 /* css */,
+				110E29D0178A30D7008E7FA8 /* img */,
+				110E29D2178A30D7008E7FA8 /* js */,
+				110E29D4178A30D7008E7FA8 /* res */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		110E29CE178A30D7008E7FA8 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				110E29CF178A30D7008E7FA8 /* arrivals.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		110E29D0178A30D7008E7FA8 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				110E29D1178A30D7008E7FA8 /* logo.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		110E29D2178A30D7008E7FA8 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				110E29D3178A30D7008E7FA8 /* arrivals.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		110E29D4178A30D7008E7FA8 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				110E29D5178A30D7008E7FA8 /* icon */,
+				110E29DB178A30D7008E7FA8 /* screen */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		110E29D5178A30D7008E7FA8 /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				110E29D6178A30D7008E7FA8 /* ios */,
+			);
+			path = icon;
+			sourceTree = "<group>";
+		};
+		110E29D6178A30D7008E7FA8 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				110E29D7178A30D7008E7FA8 /* icon-57-2x.png */,
+				110E29D8178A30D7008E7FA8 /* icon-57.png */,
+				110E29D9178A30D7008E7FA8 /* icon-72-2x.png */,
+				110E29DA178A30D7008E7FA8 /* icon-72.png */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		110E29DB178A30D7008E7FA8 /* screen */ = {
+			isa = PBXGroup;
+			children = (
+				110E29DC178A30D7008E7FA8 /* ios */,
+			);
+			path = screen;
+			sourceTree = "<group>";
+		};
+		110E29DC178A30D7008E7FA8 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				110E29DD178A30D7008E7FA8 /* screen-ipad-landscape-2x.png */,
+				110E29DE178A30D7008E7FA8 /* screen-ipad-landscape.png */,
+				110E29DF178A30D7008E7FA8 /* screen-ipad-portrait-2x.png */,
+				110E29E0178A30D7008E7FA8 /* screen-ipad-portrait.png */,
+				110E29E1178A30D7008E7FA8 /* screen-iphone-landscape-2x.png */,
+				110E29E2178A30D7008E7FA8 /* screen-iphone-landscape.png */,
+				110E29E3178A30D7008E7FA8 /* screen-iphone-portrait-2x.png */,
+				110E29E4178A30D7008E7FA8 /* screen-iphone-portrait-568h-2x.png */,
+				110E29E5178A30D7008E7FA8 /* screen-iphone-portrait.png */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,8 +313,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				110E29CA178A30D7008E7FA8 /* src */,
 				F840E1F0165FE0F500CFE078 /* config.xml */,
-				301BF56E109A69640062928A /* www */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				307C750510C5A3420062BCA9 /* Plugins */,
@@ -398,6 +526,23 @@
 				3088BBC2154F3926009F9C59 /* Default~iphone.png in Resources */,
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				110E29E6178A30D7008E7FA8 /* arrivals.html in Resources */,
+				110E29E7178A30D7008E7FA8 /* config.xml in Resources */,
+				110E29E9178A30D7008E7FA8 /* arrivals.css in Resources */,
+				110E29EA178A30D7008E7FA8 /* logo.png in Resources */,
+				110E29EC178A30D7008E7FA8 /* icon-57-2x.png in Resources */,
+				110E29ED178A30D7008E7FA8 /* icon-57.png in Resources */,
+				110E29EE178A30D7008E7FA8 /* icon-72-2x.png in Resources */,
+				110E29EF178A30D7008E7FA8 /* icon-72.png in Resources */,
+				110E29F0178A30D7008E7FA8 /* screen-ipad-landscape-2x.png in Resources */,
+				110E29F1178A30D7008E7FA8 /* screen-ipad-landscape.png in Resources */,
+				110E29F2178A30D7008E7FA8 /* screen-ipad-portrait-2x.png in Resources */,
+				110E29F3178A30D7008E7FA8 /* screen-ipad-portrait.png in Resources */,
+				110E29F4178A30D7008E7FA8 /* screen-iphone-landscape-2x.png in Resources */,
+				110E29F5178A30D7008E7FA8 /* screen-iphone-landscape.png in Resources */,
+				110E29F6178A30D7008E7FA8 /* screen-iphone-portrait-2x.png in Resources */,
+				110E29F7178A30D7008E7FA8 /* screen-iphone-portrait-568h-2x.png in Resources */,
+				110E29F8178A30D7008E7FA8 /* screen-iphone-portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +573,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
+				110E29E8178A30D7008E7FA8 /* cordova.js in Sources */,
+				110E29EB178A30D7008E7FA8 /* arrivals.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,8 +691,8 @@
 					"-weak_framework",
 					CoreMedia,
 					"-weak-lSystem",
-          "-force_load",
-          "${TARGET_BUILD_DIR}/libCordova.a",
+					"-force_load",
+					"${TARGET_BUILD_DIR}/libCordova.a",
 					"-ObjC",
 				);
 				SDKROOT = iphoneos;
@@ -585,8 +732,8 @@
 					"-weak_framework",
 					CoreMedia,
 					"-weak-lSystem",
-          "-force_load",
-          "${TARGET_BUILD_DIR}/libCordova.a",
+					"-force_load",
+					"${TARGET_BUILD_DIR}/libCordova.a",
 					"-ObjC",
 				);
 				SDKROOT = iphoneos;
