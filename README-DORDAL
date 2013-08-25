@@ -1,0 +1,51 @@
+todo checklist
+
+X get phonegap 3.0 setup; compile apps for ios and android
+X get a debug method in place ( weinre in this case )
+- CSS debugging & JS debugging in browser.... need to learn more about this.
+
+- need to do some prototype code with angular; see what I can do. 
+  - data binding
+  - api call to BART API
+  - event handling
+
+- Need to get topcoat installed; setup a simple UI
+- need to build out app
+  - tasks TBD
+- need to develop icon and build actual app binary
+- need to figure out how to deploy to app store
+
+
+
+- dev strategy
+ - work on getting a basic 
+
+- station would be a model, with nested objects for time, etc.
+  - name
+  - abbr
+  - etd
+    - station[]
+	    - train[]
+	       - mins
+	       - length
+
+- every time you hit refresh the controller would call the API and populate each station model you have
+- so maybe first thing is to get a station model, and bind the data
+- then I could make things into two views, one which shows the station list and another which shows the times.
+- then I'd probably want to figure out how to persist that
+- then I'd want to make the API calls to BART to get the realtime data
+
+
+
+Launch Todo
+- remember to change the <access origin="*" /> in config.xml
+
+
+
+Random Concepts
+
+- data binding: bind the model data to the view and vice-versa. This means you don't have to constantly update crap.
+- dependency injection: you have some code that figures out the dependencies for your code at runtime
+- 
+
+

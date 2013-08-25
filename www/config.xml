@@ -7,6 +7,7 @@
     <author email="david@ordal.com" href="http://www.ordal.com">
         David Ordal
     </author>
+    <access origin="*" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
