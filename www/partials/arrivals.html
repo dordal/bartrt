@@ -1,11 +1,11 @@
-
         <div class="app" ng-controller="ArrivalsCtrl">
             <div class="header">
                 <div class="left">
                     BART Appaaa
                 </div>
                 <div class="right">
-                    Buttonsaaaa
+                    Buttons
+                    <button ng-click="loadData()">Load data</button>
                 </div>
             </div>
             <div class="body">
@@ -13,9 +13,11 @@
                     <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
                     <div ng-repeat="etd in station.etd">
                         {{etd.name}}
-                        <span ng-repeat="train in etd.trains">
-                            {{train.minutes}} min
-                        </span>
+                        <ul>
+                        <li ng-repeat="train in etd.trains">
+                            {{train.minutes}} min ({{train.length}} car train)
+                        </li>
+                    </ul>
                     </div>
                 </div>
             </div>
