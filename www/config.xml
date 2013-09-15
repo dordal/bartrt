@@ -2,7 +2,7 @@
 <widget id="com.phonegap.bartrt" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Bart Real-Time Arrivals</name>
     <description>
-        Bart Real-Time Arrivals provides realtime arrival data at BART stations that you select.
+        Bart Real-Time Arrivals provides real-time arrival data at BART stations that you select.
     </description>
     <content src="index.html" />
     <author email="david@ordal.com" href="http://www.ordal.com">

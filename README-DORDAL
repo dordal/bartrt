@@ -39,6 +39,7 @@ Dev Strategy
 
 Launch Todo
 - remember to change the <access origin="*" /> in config.xml
+- switch to minified libraries
 
 Random Concepts
 

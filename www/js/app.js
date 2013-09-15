@@ -1,3 +1,25 @@
+/*
+ * BartRT - app.js
+ *
+ * David Ordal - david -at- ordal.com
+ * 
+ */
+
+
+//
+// Angular Initialization + Dependency Injection
+//
+angular.module('arrivals', []).
+  config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+      when('/arrivals', {templateUrl: 'partials/arrivals.html',   controller: ArrivalsCtrl}).
+      when('/config', {templateUrl: 'partials/config.html', controller: ConfigCtrl}).
+      otherwise({redirectTo: '/arrivals'});
+}]);
+
+//
+// Arrivals Controller
+//
 function ArrivalsCtrl($scope, $http, $http) {
     $scope.stations = [{
         name: 'Fremont',
@@ -55,7 +77,8 @@ function ArrivalsCtrl($scope, $http, $http) {
   $scope.loadData = function() {
      delete $http.defaults.headers.common['X-Requested-With'];
      $http.defaults.headers.put['Access-Control-Allow-Credentials']='true'
-     $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&orig=FRMT&key=MW9S-E7SL-26DU-VV8V').success(function(data) {
+	 // http://api.bart.gov/api/etd.aspx?cmd=etd&orig=FRMT&key=MW9S-E7SL-26DU-VV8V
+     $http.get('/test/bart/12th.xml').success(function(data) {
         bartData = xmlToJson(data).root;
 
         $scope.stations[0].name = bartData.station.name;
@@ -87,30 +110,13 @@ function ArrivalsCtrl($scope, $http, $http) {
         
      });
   }
- /*
-  $scope.addTodo = function() {
-    $scope.todos.push({text:$scope.todoText, done:false});
-    $scope.todoText = '';
-  };
- 
-  $scope.remaining = function() {
-    var count = 0;
-    angular.forEach($scope.todos, function(todo) {
-      count += todo.done ? 0 : 1;
-    });
-    return count;
-  };
- 
-  $scope.archive = function() {
-    var oldTodos = $scope.todos;
-    $scope.todos = [];
-    angular.forEach(oldTodos, function(todo) {
-      if (!todo.done) $scope.todos.push(todo);
-    });
-  };
-  */
+
 }
 
+
+//
+// Config Controller
+//
 function ConfigCtrl($scope) {
 
     
