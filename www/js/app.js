@@ -21,6 +21,52 @@ angular.module('arrivals', []).
 // Arrivals Controller
 //
 function ArrivalsCtrl($scope, $http, $http) {
+
+  	// TODO: On load of the page fragment, populate the data out of local browser storage (via a JSON object). 
+  	// This should contain a list of station abbreviations & names for the stations that we want to get data for 
+  	// (rather than the current hard-coded list).
+
+  	// Data format for a given station:
+
+  	// {
+    //      name: '12th St. Oakland City Center',
+    //      abbreviation: '12th',
+    //      etd: [{
+    //          name: 'Embarcadero',
+    //          abbreviation: 'EMCD',
+    //          trains: [{
+    //              minutes: 2,
+    //              length: 6
+    //          }, {
+    //              minutes: 12,
+    //              length: 10
+    //          }]
+    //      }, {
+    //          name: 'Richmond',
+    //          abbreviation: 'RICH',
+    //          trains: [{
+    //              minutes: 7,
+    //              length: 5
+    //          }, {
+    //              minutes: 14,
+    //              length: 9
+    //          }]
+    //      },
+    //      ]
+    //  }
+
+    $scope.stations = [{
+        name: '12th St. Oakland City Center',
+        abbreviation: '12TH'
+    }, {
+        name: 'Embarcadero',
+        abbreviation: 'EMBR'
+    }, {
+        name: 'Orinda',
+        abbreviation: 'ORIN',
+    }];
+
+/*
     $scope.stations = [{
         name: 'Fremont',
         abbreviation: 'FRMT',
@@ -73,45 +119,60 @@ function ArrivalsCtrl($scope, $http, $http) {
         ]
     }];
 
+*/
 
   $scope.loadData = function() {
-     delete $http.defaults.headers.common['X-Requested-With'];
-     $http.defaults.headers.put['Access-Control-Allow-Credentials']='true'
-	 // http://api.bart.gov/api/etd.aspx?cmd=etd&orig=FRMT&key=MW9S-E7SL-26DU-VV8V
-     $http.get('/test/bart/12th.xml').success(function(data) {
-     	x2js = new X2JS();
-        bartData = x2js.xml_str2json( data ).root;
 
-        $scope.stations[0].name = bartData.station.name;
-        $scope.stations[0].abbreviation = bartData.station.abbr;
+    // make an API call and parse the data
+    function parseData(idx) {
+        $http.get('/test/bart/' + $scope.stations[idx].abbreviation + '.xml').success(function(data) {
 
-        $scope.stations[0].etd = new Array();   
+            x2js = new X2JS();
+            bartData = x2js.xml_str2json( data ).root;
 
-        // X2JS will return a single ETD result as an object, not an array. We
-        // need to convert it.
-        if (!Array.isArray(bartData.station.etd)) {
-            bartData.station.etd = new Array(bartData.station.etd);
-        }
+            $scope.stations[idx].name = bartData.station.name;
+            $scope.stations[idx].abbreviation = bartData.station.abbr;
 
-        for (e in bartData.station.etd) {
+            // clear the ETD times; we're about to reload them
+            $scope.stations[idx].etd = new Array();   
 
-            var etd = new Array();
-            etd.name = bartData.station.etd[e].destination;
-            etd.abbreviation = bartData.station.etd[e].abbreviation;
-            etd.trains = new Array();
-            for (i in bartData.station.etd[e].estimate) {
-                var train = new Array();
-                train.minutes = bartData.station.etd[e].estimate[i].minutes;
-                train.length = bartData.station.etd[e].estimate[i].length;
-
-                etd.trains.push(train);
+            // X2JS will return a single ETD result as an object, not an array. We
+            // need to convert it so the rest of our code (which assumes an array)
+            // will work.
+            if (!Array.isArray(bartData.station.etd)) {
+                bartData.station.etd = new Array(bartData.station.etd);
             }
 
-            $scope.stations[0].etd.push(etd);
-        }
+            for (e in bartData.station.etd) {
 
-        
-     });
+                var etd = new Array();
+                etd.name = bartData.station.etd[e].destination;
+                etd.abbreviation = bartData.station.etd[e].abbreviation;
+                etd.trains = new Array();
+                for (i in bartData.station.etd[e].estimate) {
+                    var train = new Array();
+                    train.minutes = bartData.station.etd[e].estimate[i].minutes;
+                    train.length = bartData.station.etd[e].estimate[i].length;
+
+                    etd.trains.push(train);
+                }
+
+                $scope.stations[idx].etd.push(etd);
+            }
+        });
+    }
+
+    delete $http.defaults.headers.common['X-Requested-With'];
+ 	$http.defaults.headers.put['Access-Control-Allow-Credentials']='true'
+	// http://api.bart.gov/api/etd.aspx?cmd=etd&orig=FRMT&key=MW9S-E7SL-26DU-VV8V
+
+    // iterate through each station in the list, and load data for it
+	for (var idx=0; idx< $scope.stations.length; idx++) {
+            // we have to call a separate function so that we can limit scope and make sure 
+            // the array index (idx) doesn't change while we're waiting for the HTTP call
+            // to return.
+            parseData(idx);
+    }
   }
 }
 
