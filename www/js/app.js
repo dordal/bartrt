@@ -9,3 +9,4 @@ angular.module('arrivals', []).
       when('/config', {templateUrl: 'partials/config.html', controller: ConfigCtrl}).
       otherwise({redirectTo: '/arrivals'});
 }]);
+

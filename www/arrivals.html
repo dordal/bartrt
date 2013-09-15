@@ -8,6 +8,7 @@
         <title>BART Real-Time Arrivals</title>
         <script src="js/angular.js"></script>
         <script src="js/arrivals.js"></script>
+        <script src="js/xml2json.min.js"></script>
     </head>
     <body>
         <div class="app" ng-controller="ArrivalsCtrl">
@@ -17,6 +18,7 @@
                 </div>
                 <div class="right">
                     Buttons
+                    <button ng-click="loadData()">Load data</button>
                 </div>
             </div>
             <div class="body">
@@ -24,9 +26,11 @@
                     <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
                     <div ng-repeat="etd in station.etd">
                         {{etd.name}}
-                        <span ng-repeat="train in etd.trains">
-                            {{train.minutes}} min
-                        </span>
+                        <ul>
+                        <li ng-repeat="train in etd.trains">
+                            {{train.minutes}} min ({{train.length}} car train)
+                        </li>
+                    </ul>
                     </div>
                 </div>
             </div>
