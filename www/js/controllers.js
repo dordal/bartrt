@@ -74,3 +74,9 @@ function ArrivalsCtrl($scope) {
   };
   */
 }
+
+function ConfigCtrl($scope) {
+
+    
+}
+

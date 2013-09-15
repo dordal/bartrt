@@ -8,31 +8,11 @@
         <title>BART Real-Time Arrivals</title>
         <script src="js/angular.js"></script>
         <script src="js/index.js"></script>
-        <script src="js/arrivals.js"></script>
+        <script src="js/controllers.js"></script>
     </head>
     <body>
-        
-        
-        <div class="app" ng-controller="ArrivalsCtrl">
-            <div class="header">
-                <div class="left">
-                    BART Appaaa
-                </div>
-                <div class="right">
-                    Buttonsaaaa
-                </div>
-            </div>
-            <div class="body">
-                <div ng-repeat="station in stations">
-                    <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
-                    <div ng-repeat="etd in station.etd">
-                        {{etd.name}}
-                        <span ng-repeat="train in etd.trains">
-                            {{train.minutes}} min
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div style="color: white;">Select One: <a style="color: white;" href="/#/config">Config</a> <a style="color: white;" href="/#/arrivals">Arrivals</a></div>
+
+        <div ng-view></div>
     </body>
 </html>
