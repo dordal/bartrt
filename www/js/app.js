@@ -59,8 +59,8 @@ function ArrivalsCtrl($scope, $http, $http) {
                 minutes: 18,
                 length: 10
             }]
-        }, {
-            name: 'San Francisco International Airport',
+    }, {
+        name: 'San Francisco International Airport',
             abbreviation: 'SFIA',
             trains: [{
                 minutes: 8,
@@ -79,14 +79,17 @@ function ArrivalsCtrl($scope, $http, $http) {
      $http.defaults.headers.put['Access-Control-Allow-Credentials']='true'
 	 // http://api.bart.gov/api/etd.aspx?cmd=etd&orig=FRMT&key=MW9S-E7SL-26DU-VV8V
      $http.get('/test/bart/12th.xml').success(function(data) {
-        bartData = xmlToJson(data).root;
+     	x2js = new X2JS();
+        bartData = x2js.xml_str2json( data ).root;
 
         $scope.stations[0].name = bartData.station.name;
         $scope.stations[0].abbreviation = bartData.station.abbr;
 
         $scope.stations[0].etd = new Array();   
 
-        if (typeof(bartData.station.etd) == 'object') {
+        // X2JS will return a single ETD result as an object, not an array. We
+        // need to convert it.
+        if (!Array.isArray(bartData.station.etd)) {
             bartData.station.etd = new Array(bartData.station.etd);
         }
 
@@ -110,7 +113,6 @@ function ArrivalsCtrl($scope, $http, $http) {
         
      });
   }
-
 }
 
 
@@ -122,8 +124,3 @@ function ConfigCtrl($scope) {
     
 }
 
-function xmlToJson(xml) {
- var x2js = new X2JS();
- var json = x2js.xml_str2json( xml );
- return json;
-}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><uri><![CDATA[http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ORIN]]></uri><date>09/15/2013</date>
+<time>12:35:18 AM PDT</time>
+<station><name>Orinda</name><abbr>ORIN</abbr><etd><destination>Pittsburg/Bay Point</destination><abbreviation>PITT</abbreviation><estimate><minutes>19</minutes><platform>1</platform><direction>North</direction><length>9</length><color>YELLOW</color><hexcolor>#ffff33</hexcolor><bikeflag>1</bikeflag></estimate></etd></station><message/></root>
