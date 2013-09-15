@@ -1,4 +1,9 @@
-
+/*
+ * BartRT - index.js
+ *
+ * David Ordal - david -at- ordal.com
+ * 
+ */
 
 // NOT TESTED PROBABLY DOES NOT WORK
 

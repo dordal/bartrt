@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.hello-world" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.phonegap.bartrt" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>BartRT</name>
     <description>
         Bart Realtime Arrivals
     </description>
+    <content src="index.html" />
     <author email="david@ordal.com" href="http://www.ordal.com">
         David Ordal
     </author>
