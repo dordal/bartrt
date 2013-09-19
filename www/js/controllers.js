@@ -168,7 +168,10 @@ function ArrivalsCtrl($scope, $http, $http) {
 //
 // Config Controller
 //
-function ConfigCtrl($scope) {
+function ConfigCtrl($scope, helloWorldFromFactory) {
 
-    
+    var foobar = helloWorldFromFactory.getPage();
+    debugger;
+    $scope.myHelloVar = foobar;
+
 }

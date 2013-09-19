@@ -9,7 +9,7 @@
 //
 // Angular Initialization + Dependency Injection
 //
-angular.module('arrivals', []).
+var BartRT = angular.module('arrivals', []).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/arrivals', {templateUrl: 'partials/arrivals.html',   controller: ArrivalsCtrl}).
