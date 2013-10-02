@@ -10,11 +10,11 @@
 //
 angular.module('bartRT', 
 	['bartRT.config', 
-	'bartRT.filters', 
-	'bartRT.services', 
-	'bartRT.directives', 
-	'bartRT.controllers',
-	'LocalStorageModule'])
+	 'bartRT.filters', 
+	 'bartRT.services', 
+	 'bartRT.directives', 
+	 'bartRT.controllers',
+	 'LocalStorageModule'])
 
   .config(['$routeProvider', function($routeProvider) {
   $routeProvider.
