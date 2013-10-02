@@ -3,11 +3,11 @@ BARTRT App
 Development Env
 Angular JS w Phonegap 3.0 & TopCoat
 
-STATUS 15 Sep 2013
-- See overall todos below. Have a basic phonegap 3.0.0 app running, but seems to have broken when I introduced routing. I think its the redirect code.
-- got a basic data binding working, basic routing, basic data pull.
-- Next up would be to clean up data pull code & read station list from local storage. 
-- Then create settings view to save station list to local storage
+STATUS 2 Oct 2013
+- See overall todos below. Have a basic phonegap 3.0.0 app running.
+- got a basic data binding working, basic routing, basic data pull from BART.
+- Station list is coming out of local storage, but currently manually saved
+- Need to create settings view to save station list to local storage
 - Then make it pretty, do error handling, etc.
 
 Overall Todo
@@ -27,3 +27,4 @@ X need to do some prototype code with angular; see what I can do.
 Launch Todo
 - remember to change the <access origin="*" /> in config.xml
 - switch to minified libraries
+- get a real API key, set it as a constant, etc.
