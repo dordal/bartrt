@@ -29,7 +29,8 @@ angular.module('bartRT.services', [])
         // @param station an abbreviation for a BART station, e.g. 12TH
         //
         getETD: function(station) {
-            $http.get('/test/bart/' + station.abbreviation + '.xml').success(function(data) {
+            // $http.get('/test/bart/' + station.abbreviation + '.xml').success(function(data) {
+            $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=MW9S-E7SL-26DU-VV8V&orig=' + station.abbreviation ).success(function(data) {
 
                 x2js = new X2JS();
                 bartData = x2js.xml_str2json( data ).root;

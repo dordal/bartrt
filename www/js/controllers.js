@@ -10,7 +10,11 @@ angular.module('bartRT.controllers', [])
 //
 // Arrivals Controller
 //
-.controller('ArrivalsCtrl', ['$scope', '$http', 'bartApi', function($scope, $http, bartApi) { 
+.controller('ArrivalsCtrl', ['$scope', '$http', 'localStorageService', 'bartApi', function($scope, $http, localStorageService, bartApi) { 
+
+    // uncomment to update the local station storage
+    // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
+
 
     /*
     $scope.stations = [{
@@ -44,25 +48,14 @@ angular.module('bartRT.controllers', [])
     // TODO: On load of the page fragment, populate the data out of local browser storage (via a JSON object). 
     // This should contain a list of station abbreviations & names for the stations that we want to get data for 
     // (rather than the current hard-coded list).
-
-    $scope.stations = [
-    {
-        name: '12th St. Oakland City Center',
-        abbreviation: '12TH'
-    }, {
-        name: 'Embarcadero',
-        abbreviation: 'EMBR'
-    }, {
-        name: 'Orinda',
-        abbreviation: 'ORIN',
-    }];
-
     $scope.loadData = function() {
+
+        // load stations from local storage
+        $scope.stations = localStorageService.get('stations');
 
         delete $http.defaults.headers.common['X-Requested-With'];
         $http.defaults.headers.put['Access-Control-Allow-Credentials']='true'
-        // http://api.bart.gov/api/etd.aspx?cmd=etd&orig=FRMT&key=MW9S-E7SL-26DU-VV8V
-
+        
         // iterate through each station in the list, and load data for it
         for (var idx=0; idx< $scope.stations.length; idx++) {
             // we have to call a separate function so that we can limit scope and make sure 
