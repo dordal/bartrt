@@ -5,16 +5,19 @@
  * 
  */
 
-
 //
 // Angular Initialization + Dependency Injection
 //
-var BartRT = angular.module('arrivals', []).
-  config(['$routeProvider', function($routeProvider) {
+angular.module('bartRT', 
+	['bartRT.config', 
+	'bartRT.filters', 
+	'bartRT.services', 
+	'bartRT.directives', 
+	'bartRT.controllers'])
+
+  .config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-      when('/arrivals', {templateUrl: 'partials/arrivals.html',   controller: ArrivalsCtrl}).
-      when('/config', {templateUrl: 'partials/config.html', controller: ConfigCtrl}).
+      when('/arrivals', {templateUrl: 'partials/arrivals.html', controller: 'ArrivalsCtrl'}).
+      when('/config', {templateUrl: 'partials/config.html', controller: 'ConfigCtrl'}).
       otherwise({redirectTo: '/arrivals'});
 }]);
-
-

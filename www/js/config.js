@@ -4,3 +4,5 @@
  * David Ordal - david -at- ordal.com
  * 
  */
+
+ angular.module('bartRT.config', []);
