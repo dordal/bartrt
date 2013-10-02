@@ -5,10 +5,7 @@
  * 
  */
 
-angular.module('bartRT.services', [])
-
-
-.factory('helloWorldFromFactory', [function() {
+BartRT.factory('helloWorldFromFactory', [function() {
     return {
         sayHello: function() {
             return "Hello, World!"
@@ -19,7 +16,7 @@ angular.module('bartRT.services', [])
 //
 // bartApi Service
 //
-.factory('bartApi', ['$http', function($http) {
+BartRT.factory('bartApi', ['$http', function($http) {
     return {
 
         //
@@ -43,7 +40,7 @@ angular.module('bartRT.services', [])
                 // X2JS will return a single ETD result as an object, not an array. We
                 // need to convert it so the rest of our code (which assumes an array)
                 // will work.
-                if (!Array.isArray(bartData.station.etd)) {
+                if (typeof bartData.station.etd !== 'undefined' && !Array.isArray(bartData.station.etd)) {
                     bartData.station.etd = new Array(bartData.station.etd);
                 }
 
@@ -56,7 +53,7 @@ angular.module('bartRT.services', [])
                     etd.trains = new Array();
 
                     // same problem as above; do another array conversion
-                    if (!Array.isArray(bartData.station.etd[e].estimate)) {
+                    if (typeof bartData.station.etd[e].estimate !== 'undefined' && !Array.isArray(bartData.station.etd[e].estimate)) {
                         bartData.station.etd[e].estimate = new Array(bartData.station.etd[e].estimate);
                     }
                     for (i in bartData.station.etd[e].estimate) {

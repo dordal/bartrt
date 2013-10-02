@@ -8,13 +8,7 @@
 //
 // Angular Initialization + Dependency Injection
 //
-angular.module('bartRT', 
-	['bartRT.config', 
-	 'bartRT.filters', 
-	 'bartRT.services', 
-	 'bartRT.directives', 
-	 'bartRT.controllers',
-	 'LocalStorageModule'])
+var BartRT = angular.module('bartRT', ['LocalStorageModule'])
 
   .config(['$routeProvider', function($routeProvider) {
   $routeProvider.

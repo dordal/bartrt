@@ -5,12 +5,10 @@
  * 
  */
 
-angular.module('bartRT.controllers', [])
-
 //
 // Arrivals Controller
 //
-.controller('ArrivalsCtrl', ['$scope', '$http', 'localStorageService', 'bartApi', function($scope, $http, localStorageService, bartApi) { 
+BartRT.controller('ArrivalsCtrl', ['$scope', '$http', 'localStorageService', 'bartApi', function($scope, $http, localStorageService, bartApi) { 
 
     // uncomment to update the local station storage
     // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
@@ -64,12 +62,12 @@ angular.module('bartRT.controllers', [])
             bartApi.getETD($scope.stations[idx]);
         }
     }
-}])
+}]);
 
 //
 // Config Controller
 //
-.controller('ConfigCtrl', ['$scope', 'helloWorldFromFactory', function($scope, helloWorldFromFactory) { 
+BartRT.controller('ConfigCtrl', ['$scope', 'helloWorldFromFactory', function($scope, helloWorldFromFactory) { 
     var foobar = helloWorldFromFactory.sayHello();
     $scope.myHelloVar = foobar;
 }]);
