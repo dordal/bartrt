@@ -23,3 +23,20 @@ BartRT.factory('helloWorldFromFactory', ['$http', function($http) {
         }
     };
 }]);
+
+BartRT.factory('bartApi', ['$http', function($http) {
+    return {
+
+        //
+        // getETD: this function takes a station name and loads the ETD data from
+        // the BART API, and then parses it into an array.
+        //
+        getETD: function(station) {
+            $http.get('/test/bart/EMBR.xml').success(function(data) {
+                debugger;
+                return data;
+            });
+        },
+
+    };
+}]);

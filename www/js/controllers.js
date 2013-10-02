@@ -164,7 +164,6 @@ function ArrivalsCtrl($scope, $http, $http) {
   }
 }
 
-
 //
 // Config Controller
 //
