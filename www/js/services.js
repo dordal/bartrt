@@ -16,7 +16,7 @@ BartRT.factory('helloWorldFromFactory', [function() {
 //
 // bartApi Service
 //
-BartRT.factory('bartApi', ['$http', function($http) {
+BartRT.factory('bartApi', ['$http', 'bartApiKey', function($http, bartApiKey) {
     return {
 
         //
@@ -27,7 +27,8 @@ BartRT.factory('bartApi', ['$http', function($http) {
         //
         getETD: function(station) {
             // $http.get('/test/bart/' + station.abbreviation + '.xml').success(function(data) {
-            $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=MW9S-E7SL-26DU-VV8V&orig=' + station.abbreviation ).success(function(data) {
+            $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=' + bartApiKey + '&orig=' + station.abbreviation )
+            .success(function(data, status, headers, config) {
 
                 x2js = new X2JS();
                 bartData = x2js.xml_str2json( data ).root;
@@ -66,7 +67,37 @@ BartRT.factory('bartApi', ['$http', function($http) {
 
                     station.etd.push(etd);
                 }
+            })
+            .error(function(data, status, headers, config) {
+                // TODO: handle error
             });
+        },
+
+        //
+        // Load a list of stations from the BART API
+        //
+        getStations: function(stationList) {
+
+            console.log(stationList);
+
+            $http.get('http://api.bart.gov/api/stn.aspx?cmd=stns&key=' + bartApiKey )
+            .success(function(data, status, headers, config) {
+
+                x2js = new X2JS();
+                bartData = x2js.xml_str2json( data ).root;
+
+                stationList = bartData.stations.station;
+
+                            console.log(stationList);
+
+
+            })
+            .error(function(data, status, headers, config) {
+                // TODO: handle error
+            });
+
+
+
         }
     };
 }]);

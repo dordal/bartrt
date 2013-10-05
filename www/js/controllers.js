@@ -8,7 +8,7 @@
 //
 // Arrivals Controller
 //
-BartRT.controller('ArrivalsCtrl', ['$scope', '$http', 'localStorageService', 'bartApi', function($scope, $http, localStorageService, bartApi) { 
+BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', function($scope, localStorageService, bartApi) { 
 
     // uncomment to update the local station storage
     // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
@@ -46,14 +46,11 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$http', 'localStorageService', 'ba
     // TODO: On load of the page fragment, populate the data out of local browser storage (via a JSON object). 
     // This should contain a list of station abbreviations & names for the stations that we want to get data for 
     // (rather than the current hard-coded list).
-    $scope.loadData = function() {
+    $scope.loadETD = function() {
 
         // load stations from local storage
         $scope.stations = localStorageService.get('stations');
 
-        delete $http.defaults.headers.common['X-Requested-With'];
-        $http.defaults.headers.put['Access-Control-Allow-Credentials']='true'
-        
         // iterate through each station in the list, and load data for it
         for (var idx=0; idx< $scope.stations.length; idx++) {
             // we have to call a separate function so that we can limit scope and make sure 
@@ -67,7 +64,21 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$http', 'localStorageService', 'ba
 //
 // Config Controller
 //
-BartRT.controller('ConfigCtrl', ['$scope', 'helloWorldFromFactory', function($scope, helloWorldFromFactory) { 
-    var foobar = helloWorldFromFactory.sayHello();
-    $scope.myHelloVar = foobar;
+BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', function($scope, localStorageService, bartApi) {
+
+    $scope.stationList = new Array();
+
+    // 
+    // load preference data
+    //
+    $scope.loadPreferences = function() {
+        bartApi.getStations($scope.stationList);
+
+        // go through local storage, iterate through the stations list
+        // for each station, assign something to $scope to set options
+        // somehow will be something to do with the ng-options directive:
+        // http://docs.angularjs.org/api/ng.directive:select
+
+        console.log($scope.stationList);
+    }
 }]);

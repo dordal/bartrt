@@ -1,3 +1,25 @@
-<div style="color:white;">I AM A CONFIG PAGE</div>
+<div class="app" ng-controller="ConfigCtrl" ng-init="loadPreferences()">
+	<div class="header">
+        <div class="left">
+            My Stations
+        </div>
+        <div class="right">
+            <button ng-click="savePreferences()">Save</button>
+        </div>
+    </div>
+    <div class="body">
+        <div ng-repeat="station in stations">
+            <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
+            <div ng-repeat="etd in station.etd">
+                {{etd.name}}
+                <ul>
+                <li ng-repeat="train in etd.trains">
+                    {{train.minutes}} min ({{train.length}} car train)
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
 
-<div style="color:white;">Value: {{myHelloVar}}</div>
+	<div style="color:white;">Value: {{myHelloVar}}</div>
+</div>
