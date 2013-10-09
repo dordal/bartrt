@@ -3,12 +3,11 @@
         <div class="left">
             My Stations
         </div>
-        <div class="right">
-            <button ng-click="savePreferences()">Save</button>
-        </div>
     </div>
     <div class="body">
-        <select ng-model="stations[0].abbreviation" ng-options="station.abbr as station.name for station in stationList"></select><br>
+        <div ng-repeat="station in stations">
+            <select ng-change="savePreferences()" ng-model="station.abbreviation" ng-options="abbr as stationObject.name for (abbr, stationObject) in stationList"></select><br>
+        </div>
         {{stations}}
     </div>
 </div>

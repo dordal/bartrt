@@ -52,7 +52,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
         $scope.stations = localStorageService.get('stations');
 
         // iterate through each station in the list, and load data for it
-        for (var idx=0; idx< $scope.stations.length; idx++) {
+        for (var idx=0; idx < $scope.stations.length; idx++) {
             // we have to call a separate function which returns a promise, so we can wait for
             // the results of each asynchronous API call. See this doc for details:
             // http://sravi-kiran.blogspot.com/2013/03/MovingAjaxCallsToACustomServiceInAngularJS.html
@@ -68,7 +68,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
 //
 BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', function($scope, localStorageService, bartApi) {
 
-    $scope.stationList = new Array();
+    $scope.stationList = new Object();
     $scope.stations = localStorageService.get('stations');
 
     // 
@@ -79,18 +79,24 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
         // we use a promise to make sure we have station data from BART
         // before loading the station list
         bartApi.getStations().then(function(stationList) {
-            console.log(stationList);
 
-            $scope.stationList = stationList;
-
-            // go through local storage, iterate through the stations list
-            // for each station, assign something to $scope to set options
-            // somehow will be something to do with the ng-options directive:
-            // http://docs.angularjs.org/api/ng.directive:select
+            // convert the data from BART to an object with station abbreviations as keys; makes
+            // for easier use later
+            for (var idx=0; idx < stationList.length; idx++) {
+                $scope.stationList[stationList[idx].abbr] = stationList[idx];
+            }
         });
     },
 
     $scope.savePreferences = function() {
+        // assign station names
+        for (var idx=0; idx < $scope.stations.length; idx++) {
+            $scope.stations[idx].name = $scope.stationList[$scope.stations[idx].abbreviation].name;
+        }
+
+        // TODO: insert de-duping code in here to remove duplicate station names (or possibly
+        // do this at load time of the list)
+
         localStorageService.add('stations',$scope.stations);
 
 

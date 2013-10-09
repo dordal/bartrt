@@ -14,10 +14,10 @@
             <div ng-repeat="etd in station.etd">
                 {{etd.name}}
                 <ul>
-                <li ng-repeat="train in etd.trains">
-                    {{train.minutes}} min ({{train.length}} car train)
-                </li>
-            </ul>
+                    <li ng-repeat="train in etd.trains">
+                        {{train.minutes}} min ({{train.length}} car train)
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
