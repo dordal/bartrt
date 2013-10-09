@@ -25,7 +25,8 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
         // 
         // @param station an abbreviation for a BART station, e.g. 12TH
         //
-        getETD: function(station) {
+        getETD: function(station, idx) {
+
             var response = $q.defer();
 
             // $http.get('/test/bart/' + station.abbreviation + '.xml').success(function(data) {
@@ -38,6 +39,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
                 // assign basic station data
                 station.name = bartData.station.name;
                 station.abbreviation = bartData.station.abbr;
+                station.idx = idx;  // index in the stations array
                 station.etd = new Array();
 
                 // X2JS will return a single ETD result as an object, not an array. We
@@ -75,7 +77,6 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
             })
             .error(function(data, status, headers, config) {
                 // TODO: handle error
-                response.reject('error');
             });
 
             return response.promise;

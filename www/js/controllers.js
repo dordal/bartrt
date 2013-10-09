@@ -48,16 +48,22 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
     // (rather than the current hard-coded list).
     $scope.loadETD = function() {
 
+        // TODO: put up a loading icon which gets removed when data is loaded
+
         // load stations from local storage
         $scope.stations = localStorageService.get('stations');
 
         // iterate through each station in the list, and load data for it
         for (var idx=0; idx < $scope.stations.length; idx++) {
+
             // we have to call a separate function which returns a promise, so we can wait for
             // the results of each asynchronous API call. See this doc for details:
             // http://sravi-kiran.blogspot.com/2013/03/MovingAjaxCallsToACustomServiceInAngularJS.html
-            bartApi.getETD($scope.stations[idx]).then(function(stations) {
-                $scope.stations[idx] = stations;
+            bartApi.getETD($scope.stations[idx], idx).then(function(station) {
+                // There's a bit of trickery here because we pass the index of the current station in the 
+                // $scope.stations array to the getETD() function, and then get it back as station.idx. This
+                // is so we can be sure to update the right station in the $scope.stations array...
+                $scope.stations[station.idx] = station;
             });
         }
     }
@@ -75,6 +81,8 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
     // load preference data
     //
     $scope.loadPreferences = function() {
+
+        // TODO: put up a loading icon which gets removed when data is loaded
 
         // we use a promise to make sure we have station data from BART
         // before loading the station list
