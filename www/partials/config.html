@@ -8,18 +8,7 @@
         </div>
     </div>
     <div class="body">
-        <div ng-repeat="station in stations">
-            <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
-            <div ng-repeat="etd in station.etd">
-                {{etd.name}}
-                <ul>
-                <li ng-repeat="train in etd.trains">
-                    {{train.minutes}} min ({{train.length}} car train)
-                </li>
-            </ul>
-            </div>
-        </div>
+        <select ng-model="stations[0].abbreviation" ng-options="station.abbr as station.name for station in stationList"></select><br>
+        {{stations}}
     </div>
-
-	<div style="color:white;">Value: {{myHelloVar}}</div>
 </div>

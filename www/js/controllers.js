@@ -54,7 +54,8 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
         // iterate through each station in the list, and load data for it
         for (var idx=0; idx< $scope.stations.length; idx++) {
             // we have to call a separate function which returns a promise, so we can wait for
-            // the results of each asynchronous API call
+            // the results of each asynchronous API call. See this doc for details:
+            // http://sravi-kiran.blogspot.com/2013/03/MovingAjaxCallsToACustomServiceInAngularJS.html
             bartApi.getETD($scope.stations[idx]).then(function(stations) {
                 $scope.stations[idx] = stations;
             });
@@ -68,20 +69,30 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
 BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', function($scope, localStorageService, bartApi) {
 
     $scope.stationList = new Array();
+    $scope.stations = localStorageService.get('stations');
 
     // 
     // load preference data
     //
     $scope.loadPreferences = function() {
-        bartApi.getStations().then(function(data) {
-            console.log(data);
+
+        // we use a promise to make sure we have station data from BART
+        // before loading the station list
+        bartApi.getStations().then(function(stationList) {
+            console.log(stationList);
+
+            $scope.stationList = stationList;
+
+            // go through local storage, iterate through the stations list
+            // for each station, assign something to $scope to set options
+            // somehow will be something to do with the ng-options directive:
+            // http://docs.angularjs.org/api/ng.directive:select
         });
+    },
 
-        // go through local storage, iterate through the stations list
-        // for each station, assign something to $scope to set options
-        // somehow will be something to do with the ng-options directive:
-        // http://docs.angularjs.org/api/ng.directive:select
+    $scope.savePreferences = function() {
+        localStorageService.add('stations',$scope.stations);
 
-        
+
     }
 }]);
