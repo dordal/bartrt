@@ -6,8 +6,11 @@
     </div>
     <div class="body">
         <div ng-repeat="station in stations">
-            <select ng-change="savePreferences()" ng-model="station.abbreviation" ng-options="abbr as stationObject.name for (abbr, stationObject) in stationList"></select><br>
+            <select ng-change="savePreferences()" ng-model="station.abbreviation" ng-options="stationObject.abbr as stationObject.name for (abbr, stationObject) in stationList">
+                <option value="">-- chose station --</option>
+            </select><a ng-click="deleteStation(station)" href="">del station</a><br>
         </div>
+        <a ng-click="addStation()" href="">add station</a>
         {{stations}}
     </div>
 </div>

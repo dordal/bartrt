@@ -57,12 +57,12 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
         for (var idx=0; idx < $scope.stations.length; idx++) {
 
             // we have to call a separate function which returns a promise, so we can wait for
-            // the results of each asynchronous API call. See this doc for details:
+            // the results of each asynchronous API call. See this doc for an example:
             // http://sravi-kiran.blogspot.com/2013/03/MovingAjaxCallsToACustomServiceInAngularJS.html
             bartApi.getETD($scope.stations[idx], idx).then(function(station) {
                 // There's a bit of trickery here because we pass the index of the current station in the 
                 // $scope.stations array to the getETD() function, and then get it back as station.idx. This
-                // is so we can be sure to update the right station in the $scope.stations array...
+                // is so we can be sure to update the correct station in the $scope.stations array...
                 $scope.stations[station.idx] = station;
             });
         }
@@ -108,5 +108,15 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
         localStorageService.add('stations',$scope.stations);
 
 
+    },
+
+    $scope.addStation = function() {
+        $scope.stations.push({'name': null, 'abbreviation': null});
+    }
+
+    $scope.deleteStation = function (station) {
+        var index=$scope.stations.indexOf(station)
+        $scope.stations.splice(index,1);     
+        localStorageService.add('stations',$scope.stations);
     }
 }]);
