@@ -11,7 +11,7 @@
 var BartRT = angular.module('bartRT', ['LocalStorageModule'])
 
 	// setup constants
-	.constant('bartApiKey', 'MW9S-E7SL-26DU-VV8V')
+	.constant('bartApiKey', 'M9KV-TWSU-T8DT-IKWW')
 
 	// configure routing
 	.config(['$routeProvider', function($routeProvider) {

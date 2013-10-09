@@ -53,10 +53,11 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
 
         // iterate through each station in the list, and load data for it
         for (var idx=0; idx< $scope.stations.length; idx++) {
-            // we have to call a separate function so that we can limit scope and make sure 
-            // the array index (idx) doesn't change while we're waiting for the HTTP call
-            // to return.
-            bartApi.getETD($scope.stations[idx]);
+            // we have to call a separate function which returns a promise, so we can wait for
+            // the results of each asynchronous API call
+            bartApi.getETD($scope.stations[idx]).then(function(stations) {
+                $scope.stations[idx] = stations;
+            });
         }
     }
 }]);
@@ -72,13 +73,15 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
     // load preference data
     //
     $scope.loadPreferences = function() {
-        bartApi.getStations($scope.stationList);
+        bartApi.getStations().then(function(data) {
+            console.log(data);
+        });
 
         // go through local storage, iterate through the stations list
         // for each station, assign something to $scope to set options
         // somehow will be something to do with the ng-options directive:
         // http://docs.angularjs.org/api/ng.directive:select
 
-        console.log($scope.stationList);
+        
     }
 }]);

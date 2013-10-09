@@ -16,7 +16,7 @@ BartRT.factory('helloWorldFromFactory', [function() {
 //
 // bartApi Service
 //
-BartRT.factory('bartApi', ['$http', 'bartApiKey', function($http, bartApiKey) {
+BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bartApiKey) {
     return {
 
         //
@@ -26,6 +26,8 @@ BartRT.factory('bartApi', ['$http', 'bartApiKey', function($http, bartApiKey) {
         // @param station an abbreviation for a BART station, e.g. 12TH
         //
         getETD: function(station) {
+            var response = $q.defer();
+
             // $http.get('/test/bart/' + station.abbreviation + '.xml').success(function(data) {
             $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=' + bartApiKey + '&orig=' + station.abbreviation )
             .success(function(data, status, headers, config) {
@@ -67,36 +69,39 @@ BartRT.factory('bartApi', ['$http', 'bartApiKey', function($http, bartApiKey) {
 
                     station.etd.push(etd);
                 }
+
+                response.resolve(station);
+
             })
             .error(function(data, status, headers, config) {
                 // TODO: handle error
+                response.reject('error');
             });
+
+            return response.promise;
         },
 
         //
         // Load a list of stations from the BART API
         //
-        getStations: function(stationList) {
+        getStations: function() {
 
-            console.log(stationList);
+            var response = $q.defer();
 
             $http.get('http://api.bart.gov/api/stn.aspx?cmd=stns&key=' + bartApiKey )
             .success(function(data, status, headers, config) {
 
                 x2js = new X2JS();
                 bartData = x2js.xml_str2json( data ).root;
-
-                stationList = bartData.stations.station;
-
-                            console.log(stationList);
-
+                response.resolve(bartData.stations.station);
 
             })
             .error(function(data, status, headers, config) {
                 // TODO: handle error
+                response.reject('error');
             });
 
-
+            return response.promise;
 
         }
     };
