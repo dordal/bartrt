@@ -96,6 +96,9 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
         });
     },
 
+    //
+    // save preference data
+    //
     $scope.savePreferences = function() {
         // assign station names
         for (var idx=0; idx < $scope.stations.length; idx++) {
@@ -110,10 +113,19 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
 
     },
 
+    //
+    // add a station
+    //
     $scope.addStation = function() {
+        // we add a new element to the array but we don't want to save
+        // to local storage here, because the user hasn't picked which
+        // station they want to add yet
         $scope.stations.push({'name': null, 'abbreviation': null});
-    }
+    },
 
+    // 
+    // delete a station
+    // 
     $scope.deleteStation = function (station) {
         var index=$scope.stations.indexOf(station)
         $scope.stations.splice(index,1);     
