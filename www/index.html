@@ -9,6 +9,7 @@
 
         <!-- Libraries -->
         <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
         <script src="lib/angular/angular-local-storage.js"></script>
         <script src="lib/xml2json.js"></script>
 
@@ -19,9 +20,17 @@
         <script src="js/directives.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>
+        <script type="text/javascript">
+         // deviceReady not working. This same code works in the hello world app; so its not clear
+         // why its not working here. Maybe angular is somehow taking over before it can run?
+         // Possibly try adjusting load order
+         // document.addEventListener('deviceready', function(){ alert('i am ready')}, false);
+        </script>
     </head>
     <body>
-        <div style="color: white;">Select One: <a style="color: white;" href="/#/config">Config</a> <a style="color: white;" href="/#/arrivals">Arrivals</a></div>
+        <p>spacer text to get past ios bar</p>
+
+        <div style="color: white;">Select One: <a style="color: white;" href="#/config">Config</a> <a style="color: white;" href="#/arrivals">Arrivals</a> </div>
 
         <div ng-view></div>
     </body>

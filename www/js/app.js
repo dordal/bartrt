@@ -8,7 +8,7 @@
 //
 // Angular Initialization + Dependency Injection
 //
-var BartRT = angular.module('bartRT', ['LocalStorageModule'])
+var BartRT = angular.module('bartRT', ['LocalStorageModule','ngRoute'])
 
 	// setup constants
 	.constant('bartApiKey', 'M9KV-TWSU-T8DT-IKWW')
@@ -26,4 +26,17 @@ var BartRT = angular.module('bartRT', ['LocalStorageModule'])
 		// set headers to avoid CORS issues
 		delete $httpProvider.defaults.headers.common['X-Requested-With'];
 		$httpProvider.defaults.headers.put['Access-Control-Allow-Credentials']='true'
-	}]);
+	}])
+
+	// configure local storage provider
+	.config(function (localStorageServiceProvider) {
+     	localStorageServiceProvider.prefix = 'bartRT';
+  	})
+
+	// load some defaults if none are present in local storage
+	.run(function (localStorageService) {
+		var stations = localStorageService.get('stations');
+		if (stations == null) {
+            localStorageService.add('stations',[{ abbreviation: '12TH'}, {abbreviation: 'EMBR'}]);
+        }
+	});
