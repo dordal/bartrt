@@ -33,10 +33,15 @@ var BartRT = angular.module('bartRT', ['LocalStorageModule','ngRoute'])
      	localStorageServiceProvider.prefix = 'bartRT';
   	})
 
-	// load some defaults if none are present in local storage
+	// load some defaults if none are present in local storage, setup other misc app stuff
 	.run(function (localStorageService) {
 		var stations = localStorageService.get('stations');
 		if (stations == null) {
             localStorageService.add('stations',[{ abbreviation: '12TH'}, {abbreviation: 'EMBR'}]);
         }
+
+        // add a 20px iOS 7 header. See https://gist.github.com/shazron/6602131
+		if(navigator.userAgent.match(/iPhone OS 7/)) {
+			document.body.style.marginTop = "20px";
+		}
 	});
