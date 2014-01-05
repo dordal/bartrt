@@ -7,11 +7,14 @@
         <link rel="stylesheet" type="text/css" href="css/app.css" />
         <title>BART Real-Time Arrivals</title>
 
+        <!-- PhoneGap -->
+        <script type="text/javascript" src="phonegap.js"></script>
+
         <!-- Libraries -->
-        <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular/angular-route.js"></script>
-        <script src="lib/angular/angular-local-storage.js"></script>
-        <script src="lib/xml2json.js"></script>
+        <script src="js/lib/angular/angular.js"></script>
+        <script src="js/lib/angular/angular-route.js"></script>
+        <script src="js/lib/angular/angular-local-storage.js"></script>
+        <script src="js/lib/xml2json.js"></script>
 
         <!-- Application Code -->
         <script src="js/app.js"></script>
@@ -21,10 +24,7 @@
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>
         <script type="text/javascript">
-         // deviceReady not working. This same code works in the hello world app; so its not clear
-         // why its not working here. Maybe angular is somehow taking over before it can run?
-         // Possibly try adjusting load order
-         // document.addEventListener('deviceready', function(){ alert('i am ready')}, false);
+         document.addEventListener('deviceready', function(){ alert('i am ready')}, false);
         </script>
     </head>
     <body>
