@@ -67,6 +67,12 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
                         train.length = bartData.station.etd[e].estimate[i].length;
 
                         etd.trains.push(train);
+
+                        // color is a little funny. At a station like Hayward, you could (theoretically) have
+                        // both a green train and an orange train headed for Fremont, if you were running during
+                        // commute hours. For now, we ignore that and take the color of the last train we see, but
+                        // we may need to improve this in the future.
+                        etd.color = bartData.station.etd[e].estimate[i].color.toLowerCase();
                     }
 
                     station.etd.push(etd);

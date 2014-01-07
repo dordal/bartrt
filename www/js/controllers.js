@@ -43,9 +43,9 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
     }
     */
 
-    // TODO: On load of the page fragment, populate the data out of local browser storage (via a JSON object). 
-    // This should contain a list of station abbreviations & names for the stations that we want to get data for 
-    // (rather than the current hard-coded list).
+    //
+    // load arrival times
+    //
     $scope.loadETD = function() {
 
         // TODO: put up a loading icon which gets removed when data is loaded
@@ -66,6 +66,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
                 $scope.stations[station.idx] = station;
             });
         }
+        $scope.currentTime = Date.now();
     }
 }]);
 

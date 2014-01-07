@@ -5,6 +5,11 @@
  *
  */
 
+/*
+ * General App Styles
+ *
+ */
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -13,13 +18,11 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#000000;
+    background-color:#2f2f2f;
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
-    margin:0px;
-    padding:0px;
     width:100%;
 }
 
@@ -28,11 +31,43 @@ body {
     color: #fff;
 }
 
-h1 {
-    font-size:24px;
+/*
+ * Header
+ *
+ */
+
+.header .title,
+.header .controls {
+    width: 50%;
+    float: left;
+    font-size:18px;
+    font-weight: normal;
+    background-color: #292929;
+}
+
+.header .title div,
+.header .controls div {
+    margin: 10px 10px 10px 10px;
+}
+
+.header .title {
+    text-align: left;
+}
+
+.header .controls {
+    text-align: right;
+}
+
+/*
+ * Arrivals
+ *
+ */
+
+.station-block {
+   margin: 10px 10px 10px 10px;
+}
+
+.station-block h1 {
+    font-size:15px;
     font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
 }

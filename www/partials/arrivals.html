@@ -1,21 +1,17 @@
 <div class="app" ng-controller="ArrivalsCtrl" ng-init="loadETD()">
-    <div class="row">
-        <div style="color: white;" class="col-xs-6">BART Arrivals</div>
-        <div style="color: white;" class="col-xs-6"><a href="#/config">edit</a><button ng-click="loadETD()">Refresh</button></div>
+    <div class="header">
+        <div class="title"><div>BART Arrivals - {{currentTime | date:'h:mma'}}</div></div>
+        <div class="controls"><div><a href="#/config">edit</a><button class="btn" ng-click="loadETD()">Refresh</button></div></div>
     </div>
-    <div class="row">
-        <div class="body">
-            <div ng-repeat="station in stations">
-                <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
-                <div ng-repeat="etd in station.etd">
-                    {{etd.name}}
-                    <ul>
-                        <li ng-repeat="train in etd.trains">
-                            {{train.minutes}} min ({{train.length}} car train)
-                        </li>
-                    </ul>
-                </div>
+    <div class="body">
+        <div class="station-block" ng-repeat="station in stations">
+        <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
+            <div ng-repeat="etd in station.etd">
+                <div class="train-{{etd.color}}"></div>
+                {{etd.name}}: 
+                <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span> min
             </div>
-        </div>            
-    </div>   
+            <div ng-show="!station.etd.length">No trains</div>
+        </div>
+    </div>            
 </div>
