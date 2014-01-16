@@ -50,12 +50,8 @@ body {
     margin: 10px 10px 10px 10px;
 }
 
-.header .title {
-    text-align: left;
-}
-
-.header .controls {
-    text-align: right;
+.navbar .navbar-nav {
+    float: right;
 }
 
 /*
