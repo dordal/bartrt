@@ -6,14 +6,14 @@
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li><a href="#/config">Edit</a></li>
-                <li><a href="#" ng-click="loadETD()">Refresh</a></li>
+                <li><a href="#/config"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                <li><a href="#" ng-click="loadETD()"><span class="glyphicon glyphicon-refresh"></span></a></li>
               </ul>
             </div>
         </div>
     </div>
-    <div class="body">
         <div class="container">
+    <div class="body">
             <div class="station-block" ng-repeat="station in stations">
             <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
                 <div ng-repeat="etd in station.etd">

@@ -24,6 +24,7 @@ body {
     font-size:12px;
     height:100%;
     width:100%;
+    padding-top:50px;                           /* allows for bootstrap header */
 }
 
 /* Portrait layout (default) */
@@ -35,20 +36,6 @@ body {
  * Header
  *
  */
-
-.header .title,
-.header .controls {
-    width: 50%;
-    float: left;
-    font-size:18px;
-    font-weight: normal;
-    background-color: #292929;
-}
-
-.header .title div,
-.header .controls div {
-    margin: 10px 10px 10px 10px;
-}
 
 .navbar .navbar-nav {
     float: right;
