@@ -5,14 +5,6 @@
  * 
  */
 
-BartRT.factory('helloWorldFromFactory', [function() {
-    return {
-        sayHello: function() {
-            return "Hello, World!"
-        }
-    };
-}])
-
 //
 // bartApi Service
 //

@@ -6,10 +6,12 @@ Angular JS w Phonegap 3.0 & TopCoat
 STATUS 2 Jan 2014
 - Most basic functionality works. Can load station ETD data, etc.
 - Config sort of works... needs to have error checking, station deduplication, etc.
-- After that, next step is to get Topcoat or Bootstrap installed. Not clear which I should use; TopCoat
-  seems a little better for mobile but Bootstrap has more support and even: http://angular-ui.github.io/bootstrap/
-  Dropdowns look like the hardest; there is an angular select2 library but it requires 
-  jquery which I'm trying to avoid. Bootstrap has some simple drop downs.
+- Bootstrap is installed and working, and some basic icons, but:
+  - Need to figure out how to do the config settings dialog
+  - Need to add colors to the train list
+  - Need to commission an icon on oDesk
+  - Need to figure out the status bar on iOS7; its sort of overlapping. Tried putting some code in config.php but it didn't really do the  job properly.
+- Will need to get my own provisioning profile and iOS dev account at some point.
 
 Overall Todo
 X get phonegap 3.0 setup; compile apps for ios and android
@@ -19,7 +21,7 @@ X need to do some prototype code with angular; see what I can do.
   X data binding
   X api call to BART API
   X event handling
-- Need to get topcoat installed; setup a simple UI
+X Need to get topcoat installed; setup a simple UI
 - need to build out app
   - tasks TBD
 - need to develop icon and build actual app binary
