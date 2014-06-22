@@ -18,28 +18,68 @@
 function X2JS(config) {
 	'use strict';
 		
-	var VERSION = "1.1.2";
+	var VERSION = "1.1.5";
 	
 	config = config || {};
 	initConfigDefaults();
+	initRequiredPolyfills();
 	
 	function initConfigDefaults() {
-		if(config.escapeMode === undefined)
+		if(config.escapeMode === undefined) {
 			config.escapeMode = true;
-		if(config.attributePrefix === undefined)
-			config.attributePrefix = "_";
-		if(config.arrayAccessForm === undefined)
-			config.arrayAccessForm = "none";
-		if(config.emptyNodeForm === undefined)
-			config.emptyNodeForm = "text";
+		}
+		config.attributePrefix = config.attributePrefix || "_";
+		config.arrayAccessForm = config.arrayAccessForm || "none";
+		config.emptyNodeForm = config.emptyNodeForm || "text";
+		if(config.enableToStringFunc === undefined) {
+			config.enableToStringFunc = true; 
+		}
+		config.arrayAccessFormPaths = config.arrayAccessFormPaths || []; 
+		if(config.skipEmptyTextNodesForObj === undefined) {
+			config.skipEmptyTextNodesForObj = true;
+		}
+		if(config.stripWhitespaces === undefined) {
+			config.stripWhitespaces = true;
+		}
+		config.datetimeAccessFormPaths = config.datetimeAccessFormPaths || [];
 	}
 
 	var DOMNodeTypes = {
 		ELEMENT_NODE 	   : 1,
 		TEXT_NODE    	   : 3,
 		CDATA_SECTION_NODE : 4,
+		COMMENT_NODE	   : 8,
 		DOCUMENT_NODE 	   : 9
 	};
+	
+	function initRequiredPolyfills() {
+		function pad(number) {
+	      var r = String(number);
+	      if ( r.length === 1 ) {
+	        r = '0' + r;
+	      }
+	      return r;
+	    }
+		// Hello IE8-
+		if(typeof String.prototype.trim !== 'function') {			
+			String.prototype.trim = function() {
+				return this.replace(/^\s+|^\n+|(\s|\n)+$/g, '');
+			}
+		}
+		if(typeof Date.prototype.toISOString !== 'function') {
+			// Implementation from http://stackoverflow.com/questions/2573521/how-do-i-output-an-iso-8601-formatted-string-in-javascript
+			Date.prototype.toISOString = function() {
+		      return this.getUTCFullYear()
+		        + '-' + pad( this.getUTCMonth() + 1 )
+		        + '-' + pad( this.getUTCDate() )
+		        + 'T' + pad( this.getUTCHours() )
+		        + ':' + pad( this.getUTCMinutes() )
+		        + ':' + pad( this.getUTCSeconds() )
+		        + '.' + String( (this.getUTCMilliseconds()/1000).toFixed(3) ).slice( 2, 5 )
+		        + 'Z';
+		    };
+		}
+	}
 	
 	function getNodeLocalName( node ) {
 		var nodeLocalName = node.localName;			
@@ -65,7 +105,7 @@ function X2JS(config) {
 		return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&#x2F;/g, '\/');
 	}
 	
-	function toArrayAccessForm(obj, childName) {
+	function toArrayAccessForm(obj, childName, path) {
 		switch(config.arrayAccessForm) {
 		case "property":
 			if(!(obj[childName] instanceof Array))
@@ -76,14 +116,106 @@ function X2JS(config) {
 		/*case "none":
 			break;*/
 		}
+		
+		if(!(obj[childName] instanceof Array) && config.arrayAccessFormPaths.length > 0) {
+			var idx = 0;
+			for(; idx < config.arrayAccessFormPaths.length; idx++) {
+				var arrayPath = config.arrayAccessFormPaths[idx];
+				if( typeof arrayPath === "string" ) {
+					if(arrayPath == path)
+						break;
+				}
+				else
+				if( arrayPath instanceof RegExp) {
+					if(arrayPath.test(path))
+						break;
+				}				
+				else
+				if( typeof arrayPath === "function") {
+					if(arrayPath(obj, childName, path))
+						break;
+				}
+			}
+			if(idx!=config.arrayAccessFormPaths.length) {
+				obj[childName] = [obj[childName]];
+			}
+		}
+	}
+	
+	function fromXmlDateTime(prop) {
+		// Implementation based up on http://stackoverflow.com/questions/8178598/xml-datetime-to-javascript-date-object
+		// Improved to support full spec and optional parts
+		var bits = prop.split(/[-T:+Z]/g);
+		
+		var d = new Date(bits[0], bits[1]-1, bits[2]);			
+		var secondBits = bits[5].split("\.");
+		d.setHours(bits[3], bits[4], secondBits[0]);
+		if(secondBits.length>1)
+			d.setMilliseconds(secondBits[1]);
+
+		// Get supplied time zone offset in minutes
+		if(bits[6] && bits[7]) {
+			var offsetMinutes = bits[6] * 60 + Number(bits[7]);
+			var sign = /\d\d-\d\d:\d\d$/.test(prop)? '-' : '+';
+
+			// Apply the sign
+			offsetMinutes = 0 + (sign == '-'? -1 * offsetMinutes : offsetMinutes);
+
+			// Apply offset and local timezone
+			d.setMinutes(d.getMinutes() - offsetMinutes - d.getTimezoneOffset())
+		}
+		else
+			if(prop.indexOf("Z", prop.length - 1) !== -1) {
+				d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()));					
+			}
+
+		// d is now a local time equivalent to the supplied time
+		return d;
+	}
+	
+	function checkFromXmlDateTimePaths(value, childName, fullPath) {
+		if(config.datetimeAccessFormPaths.length > 0) {
+			var path = fullPath.split("\.#")[0];
+			var idx = 0;
+			for(; idx < config.datetimeAccessFormPaths.length; idx++) {
+				var dtPath = config.datetimeAccessFormPaths[idx];
+				if( typeof dtPath === "string" ) {
+					if(dtPath == path)
+						break;
+				}
+				else
+				if( dtPath instanceof RegExp) {
+					if(dtPath.test(path))
+						break;
+				}				
+				else
+				if( typeof dtPath === "function") {
+					if(dtPath(obj, childName, path))
+						break;
+				}
+			}
+			if(idx!=config.datetimeAccessFormPaths.length) {
+				return fromXmlDateTime(value);
+			}
+			else
+				return value;
+		}
+		else
+			return value;
 	}
 
-	function parseDOMChildren( node ) {
+	function parseDOMChildren( node, path ) {
 		if(node.nodeType == DOMNodeTypes.DOCUMENT_NODE) {
 			var result = new Object;
-			var child = node.firstChild; 
-			var childName = getNodeLocalName(child);
-			result[childName] = parseDOMChildren(child);
+			var nodeChildren = node.childNodes;
+			// Alternative for firstElementChild which is not supported in some environments
+			for(var cidx=0; cidx <nodeChildren.length; cidx++) {
+				var child = nodeChildren.item(cidx);
+				if(child.nodeType == DOMNodeTypes.ELEMENT_NODE) {
+					var childName = getNodeLocalName(child);
+					result[childName] = parseDOMChildren(child, childName);
+				}
+			}
 			return result;
 		}
 		else
@@ -98,22 +230,22 @@ function X2JS(config) {
 				var child = nodeChildren.item(cidx); // nodeChildren[cidx];
 				var childName = getNodeLocalName(child);
 				
-				result.__cnt++;
-				if(result[childName] == null) {
-					result[childName] = parseDOMChildren(child);
-					toArrayAccessForm(result, childName);					
-				}
-				else {
-					if(result[childName] != null) {
-						if( !(result[childName] instanceof Array)) {
-							result[childName] = [result[childName]];
-							toArrayAccessForm(result, childName);
-						}
+				if(child.nodeType!= DOMNodeTypes.COMMENT_NODE) {
+					result.__cnt++;
+					if(result[childName] == null) {
+						result[childName] = parseDOMChildren(child, path+"."+childName);
+						toArrayAccessForm(result, childName, path+"."+childName);					
 					}
-					var aridx = 0;
-					while(result[childName][aridx]!=null) aridx++;
-					(result[childName])[aridx] = parseDOMChildren(child);
-				}			
+					else {
+						if(result[childName] != null) {
+							if( !(result[childName] instanceof Array)) {
+								result[childName] = [result[childName]];
+								toArrayAccessForm(result, childName, path+"."+childName);
+							}
+						}
+						(result[childName])[result[childName].length] = parseDOMChildren(child, path+"."+childName);
+					}
+				}								
 			}
 			
 			// Attributes
@@ -137,9 +269,12 @@ function X2JS(config) {
 				}
 				if(config.escapeMode)
 					result.__text = unescapeXmlChars(result.__text);
+				if(config.stripWhitespaces)
+					result.__text = result.__text.trim();
 				delete result["#text"];
 				if(config.arrayAccessForm=="property")
 					delete result["#text_asArray"];
+				result.__text = checkFromXmlDateTimePaths(result.__text, childName, path+"."+childName);
 			}
 			if(result["#cdata-section"]!=null) {
 				result.__cdata = result["#cdata-section"];
@@ -155,13 +290,20 @@ function X2JS(config) {
 			if( result.__cnt == 0 && config.emptyNodeForm=="text" ) {
 				result = '';
 			}
+			else
+			if ( result.__cnt > 1 && result.__text!=null && config.skipEmptyTextNodesForObj) {
+				if( (config.stripWhitespaces && result.__text=="") || (result.__text.trim()=="")) {
+					delete result.__text;
+				}
+			}
 			delete result.__cnt;			
 			
-			if(result.__text!=null || result.__cdata!=null) {
+			if( config.enableToStringFunc && (result.__text!=null || result.__cdata!=null )) {
 				result.toString = function() {
 					return (this.__text!=null? this.__text:'')+( this.__cdata!=null ? this.__cdata:'');
 				};
 			}
+			
 			return result;
 		}
 		else
@@ -176,6 +318,8 @@ function X2JS(config) {
 			for(var aidx = 0; aidx < attrList.length; aidx++) {
 				var attrName = attrList[aidx];
 				var attrVal = jsonObj[attrName];
+				if(config.escapeMode)
+					attrVal=escapeXmlChars(attrVal);
 				resultStr+=" "+attrName.substr(config.attributePrefix.length)+"='"+attrVal+"'";
 			}
 		}
@@ -300,6 +444,11 @@ function X2JS(config) {
 					if(subObj instanceof Array) {					
 						result+=parseJSONArray( subObj, it, attrList );					
 					}
+					else if(subObj instanceof Date) {
+						result+=startTag(subObj, it, attrList, false);
+						result+=subObj.toISOString();
+						result+=endTag(subObj,it);
+					}
 					else {
 						var subObjElementsCnt = jsonXmlElemCount ( subObj );
 						if(subObjElementsCnt > 0 || subObj.__text!=null || subObj.__cdata!=null) {
@@ -325,13 +474,33 @@ function X2JS(config) {
 	}
 	
 	this.parseXmlString = function(xmlDocStr) {
+		var isIEParser = window.ActiveXObject || "ActiveXObject" in window;
 		if (xmlDocStr === undefined) {
 			return null;
 		}
 		var xmlDoc;
 		if (window.DOMParser) {
 			var parser=new window.DOMParser();			
-			xmlDoc = parser.parseFromString( xmlDocStr, "text/xml" );
+			var parsererrorNS = null;
+			// IE9+ now is here
+			if(!isIEParser) {
+				try {
+					parsererrorNS = parser.parseFromString("INVALID", "text/xml").childNodes[0].namespaceURI;
+				}
+				catch(err) {					
+					parsererrorNS = null;
+				}
+			}
+			try {
+				xmlDoc = parser.parseFromString( xmlDocStr, "text/xml" );
+				if( parsererrorNS!= null && xmlDoc.getElementsByTagNameNS(parsererrorNS, "parsererror").length > 0) {
+					//throw new Error('Error parsing XML: '+xmlDocStr);
+					xmlDoc = null;
+				}
+			}
+			catch(err) {
+				xmlDoc = null;
+			}
 		}
 		else {
 			// IE :(
@@ -350,15 +519,36 @@ function X2JS(config) {
 			return prop;
 		else
 			return [prop];
-	}
+	};
+	
+	this.toXmlDateTime = function(dt) {
+		if(dt instanceof Date)
+			return dt.toISOString();
+		else
+		if(typeof(dt) === 'number' )
+			return new Date(dt).toISOString();
+		else	
+			return null;
+	};
+	
+	this.asDateTime = function(prop) {
+		if(typeof(prop) == "string") {
+			return fromXmlDateTime(prop);
+		}
+		else
+			return prop;
+	};
 
 	this.xml2json = function (xmlDoc) {
 		return parseDOMChildren ( xmlDoc );
 	};
 	
 	this.xml_str2json = function (xmlDocStr) {
-		var xmlDoc = this.parseXmlString(xmlDocStr);	
-		return this.xml2json(xmlDoc);
+		var xmlDoc = this.parseXmlString(xmlDocStr);
+		if(xmlDoc!=null)
+			return this.xml2json(xmlDoc);
+		else
+			return null;
 	};
 
 	this.json2xml_str = function (jsonObj) {

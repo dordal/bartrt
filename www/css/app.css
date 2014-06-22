@@ -28,8 +28,8 @@ body {
 }
 
 /* Portrait layout (default) */
-.app {
-    color: #fff;
+.app .station-block {
+   color: #fff;
 }
 
 /*

@@ -1,7 +1,7 @@
 BARTRT App
 
 Development Env
-Angular JS w Phonegap 3.0 & TopCoat
+Angular JS w Phonegap 3.5 & Bootstrap
 
 STATUS 2 Jan 2014
 - Most basic functionality works. Can load station ETD data, etc.
@@ -36,3 +36,4 @@ Launch Todo
 
 Misc
 - There could be an issue where the phonegap libraries aren't available when angular needs them. Angular doesn't wait for the phonegap 'deviceready' function to fire, so it may try to call some phonegap function before its loaded. We can probably solve this with an angular promise if it comes up; see here: https://github.com/btford/briantford.com/blob/master/jade/blog/angular-phonegap.md
+- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px
