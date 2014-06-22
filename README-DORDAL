@@ -11,6 +11,8 @@ STATUS 2 Jan 2014
   - Need to add colors to the train list
   - Need to commission an icon on oDesk
   - Need to figure out the status bar on iOS7; its sort of overlapping. Tried putting some code in config.php but it didn't really do the  job properly.
+  - Need to do a loading state
+  - Need to figure out what happens when an error occurs
 - Will need to get my own provisioning profile and iOS dev account at some point.
 
 Overall Todo

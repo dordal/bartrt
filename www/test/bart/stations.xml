@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<uri><![CDATA[http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ORIN]]></uri>
+	<date>09/15/2013</date>
+	<time>12:35:18 AM PDT</time>
+	<stations>
+		<station>
+			<name>Orinda</name>
+			<abbr>ORIN</abbr>
+		</station>
+		<station>
+			<name>Embarcadero</name>
+			<abbr>EMBR</abbr>
+		</station>
+		<station>
+			<name>12th Street</name>
+			<abbr>12TH</abbr>
+		</station>
+	</stations>
+	<message/>
+</root>

@@ -54,3 +54,28 @@ body {
     font-size:15px;
     font-weight:normal;
 }
+
+.train-color {
+    padding: 2px;
+    display: inline;
+}
+
+.train-color-yellow {
+    background-color: yellow;
+}
+
+.train-color-red {
+    background-color: red;
+}
+
+.train-color-green {
+    background-color: green;
+}
+
+.train-color-blue {
+    background-color: blue;
+}
+
+.train-color-orange {
+    background-color: orange;
+}

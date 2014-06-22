@@ -17,7 +17,7 @@
             <div class="station-block" ng-repeat="station in stations">
             <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
                 <div ng-repeat="etd in station.etd">
-                    <div class="train-{{etd.color}}"></div>
+                    <div class="train-color train-color-{{etd.color}}"></div>
                     {{etd.name}}: 
                     <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span> min
                 </div>

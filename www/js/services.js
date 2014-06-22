@@ -21,7 +21,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
             var response = $q.defer();
 
-            // $http.get('/test/bart/' + station.abbreviation + '.xml').success(function(data) {
+            // $http.get('/test/bart/' + station.abbreviation + '.xml')
             $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=' + bartApiKey + '&orig=' + station.abbreviation )
             .success(function(data, status, headers, config) {
 
@@ -87,6 +87,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
             var response = $q.defer();
 
+            // $http.get('/test/bart/stations.xml')
             $http.get('http://api.bart.gov/api/stn.aspx?cmd=stns&key=' + bartApiKey )
             .success(function(data, status, headers, config) {
 

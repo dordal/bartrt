@@ -13,6 +13,7 @@
     </div>
     <div class="body">
         <div class="container">
+            Select the stations that you use:
             <div ng-repeat="station in stations">
             <select ng-change="savePreferences()" ng-model="station.abbreviation" ng-options="stationObject.abbr as stationObject.name for (abbr, stationObject) in stationList">
                 <option value="">-- chose station --</option>

@@ -101,16 +101,20 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
     // save preference data
     //
     $scope.savePreferences = function() {
-        // assign station names
+
+        // assign station names & verify no duplicates
         for (var idx=0; idx < $scope.stations.length; idx++) {
+            // TODO: duplicate check. Go through the list and make sure there are no duplicates
+            // If there are, we can reasonably assume the last added item was the duplicate,
+            // and should be removed. NOTE this doesn't quite work; if somebody changes an existing
+            // entry to a duplicate we won't know which one to delete. Maybe we need to figure out the
+            // changed value somehow and pass it in.
+
+            // set the station name; look it up in the station list
             $scope.stations[idx].name = $scope.stationList[$scope.stations[idx].abbreviation].name;
         }
 
-        // TODO: insert de-duping code in here to remove duplicate station names (or possibly
-        // do this at load time of the list)
-
         localStorageService.add('stations',$scope.stations);
-
 
     },
 
