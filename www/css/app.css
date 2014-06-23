@@ -28,7 +28,7 @@ body {
 }
 
 /* Portrait layout (default) */
-.app .station-block {
+.app {
    color: #fff;
 }
 
@@ -46,36 +46,75 @@ body {
  *
  */
 
-.station-block {
-   margin: 10px 10px 10px 10px;
+.arrivals .station-block {
+   float:left;
+   clear: both;
 }
 
-.station-block h1 {
+.arrivals .station-block h1 {
     font-size:15px;
     font-weight:normal;
 }
 
-.train-color {
+.arrivals .train-block {
+    clear:both;
+    font-size: 12px;
+}
+
+.arrivals .train-arrival {
+    display:inline-block;
+}
+
+.arrivals .train-color {
     padding: 2px;
-    display: inline;
+    margin: 4px 2px 0px 0px;
+    width: 9px;
+    height: 9px;
+    display: inline-block;
 }
 
-.train-color-yellow {
-    background-color: yellow;
+.arrivals .train-color-yellow {
+    background-color: #ffff33;
 }
 
-.train-color-red {
-    background-color: red;
+.arrivals .train-color-red {
+    background-color: #ff0000;
 }
 
-.train-color-green {
-    background-color: green;
+.arrivals .train-color-green {
+    background-color: #339933;
 }
 
-.train-color-blue {
-    background-color: blue;
+.arrivals .train-color-blue {
+    background-color: #0099cc;
 }
 
-.train-color-orange {
-    background-color: orange;
+.arrivals .train-color-orange {
+    background-color: #ff9933;
+}
+
+/*
+ * Config
+ *
+ */
+
+.config .container {
+    font-size: 16px;
+}
+
+.config .station-block {
+    border-bottom: 1px dotted #666666;
+}
+
+.config .station-name,
+.config .station-edit {
+    
+}
+
+.config .station-edit {
+    text-align: right;
+}
+
+.config .station-edit a {
+    color: #ffffff;
 }

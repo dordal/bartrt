@@ -1,4 +1,4 @@
-<div class="app" ng-controller="ArrivalsCtrl" ng-init="loadETD()">
+<div class="app arrivals" ng-controller="ArrivalsCtrl" ng-init="loadETD()">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -12,17 +12,19 @@
             </div>
         </div>
     </div>
-        <div class="container">
-    <div class="body">
-            <div class="station-block" ng-repeat="station in stations">
-            <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
-                <div ng-repeat="etd in station.etd">
+    <div class="container">
+        <div class="body">
+            <div class="station-block col-xs-12" ng-repeat="station in stations">
+                <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
+                <div class="train-block" ng-repeat="etd in station.etd">
                     <div class="train-color train-color-{{etd.color}}"></div>
-                    {{etd.name}}: 
-                    <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span> min
+                    <div class="train-arrival">
+                        {{etd.name}}: 
+                        <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span> min
+                    </div>
                 </div>
                 <div ng-show="!station.etd.length">No trains</div>
-            </div>
+           </div>
         </div>
-    </div>            
+    </div>
 </div>

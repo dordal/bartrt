@@ -3,6 +3,10 @@ BARTRT App
 Development Env
 Angular JS w Phonegap 3.5 & Bootstrap
 
+STATUS 22 JUNE 2014
+- Am working on the config page. Probably need to recompile a version of BS with zero px gutters.
+
+
 STATUS 2 Jan 2014
 - Most basic functionality works. Can load station ETD data, etc.
 - Config sort of works... needs to have error checking, station deduplication, etc.
@@ -36,4 +40,4 @@ Launch Todo
 
 Misc
 - There could be an issue where the phonegap libraries aren't available when angular needs them. Angular doesn't wait for the phonegap 'deviceready' function to fire, so it may try to call some phonegap function before its loaded. We can probably solve this with an angular promise if it comes up; see here: https://github.com/btford/briantford.com/blob/master/jade/blog/angular-phonegap.md
-- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px
+- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the space between columns = 20px instead of 30px
