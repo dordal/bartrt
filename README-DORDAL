@@ -3,9 +3,15 @@ BARTRT App
 Development Env
 Angular JS w Phonegap 3.5 & Bootstrap
 
-STATUS 22 JUNE 2014
-- Am working on the config page. Probably need to recompile a version of BS with zero px gutters.
+STATUS 7 Feb 2015 - Hackathon
+- all basic functionality working
+- Needs styling, bug testing
+- station add feature needs de-duplication code
 
+STATUS 22 JUNE 2014
+- Am working on the config page. 
+- Basic idea is to only be able to add/remove from the list of stations on the station edit page. If you add a 
+  station, it takes you to a second 'station selector' page with all the stations listed. Also you can drag to rearrange
 
 STATUS 2 Jan 2014
 - Most basic functionality works. Can load station ETD data, etc.

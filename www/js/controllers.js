@@ -8,7 +8,7 @@
 //
 // Arrivals Controller
 //
-BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', function($scope, localStorageService, bartApi) { 
+BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'localStorageService', 'bartApi', function($scope, $location, $routeParams, localStorageService, bartApi) { 
 
     // uncomment to update the local station storage
     // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
@@ -50,8 +50,13 @@ BartRT.controller('ArrivalsCtrl', ['$scope', 'localStorageService', 'bartApi', f
 
         // TODO: put up a loading icon which gets removed when data is loaded
 
-        // load stations from local storage
-        $scope.stations = localStorageService.get('stations');
+        // check whether we were passed a station (e.g. #/stations/19th), and either display just
+        // that station, or load all stations from local storage.
+        if ( $routeParams.station ) {
+            $scope.stations = [{ abbreviation: $routeParams.station}];
+        } else {
+            $scope.stations = localStorageService.get('stations');
+        }
 
         // iterate through each station in the list, and load data for it
         for (var idx=0; idx < $scope.stations.length; idx++) {
@@ -136,4 +141,50 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
         $scope.stations.splice(index,1);     
         localStorageService.add('stations',$scope.stations);
     }
+}]);
+
+//
+// Station List Controller
+//
+BartRT.controller('StationListCtrl', ['$scope', '$location', '$routeParams', 'localStorageService', 'bartApi', function($scope, $location, $routeParams, localStorageService, bartApi) {
+
+    $scope.stationList = new Object();
+    $scope.stations = localStorageService.get('stations');
+
+    // 
+    // load preference data
+    //
+    $scope.loadStationList = function() {
+
+        // TODO: put up a loading icon which gets removed when data is loaded
+
+        // we use a promise to make sure we have station data from BART
+        // before loading the station list
+        bartApi.getStations().then(function(stationList) {
+
+            // convert the data from BART to an object with station abbreviations as keys; makes
+            // for easier use later
+            for (var idx=0; idx < stationList.length; idx++) {
+                $scope.stationList[stationList[idx].abbr] = stationList[idx];
+            }
+        });
+    }
+
+    // 
+    // select a station
+    //
+    $scope.selectStation = function(station) {
+
+        console.log(station);
+        console.log();
+
+        if($routeParams.action == 'lookup') {
+            $location.path('arrivals/' + station.abbr);
+        } else {
+            $scope.stations.push({'name': station.name, 'abbreviation': station.abbr});
+            localStorageService.add('stations',$scope.stations);
+            $location.path('config');
+        }
+    }
+
 }]);

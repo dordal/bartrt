@@ -102,19 +102,25 @@ body {
     font-size: 16px;
 }
 
-.config .station-block {
-    border-bottom: 1px dotted #666666;
+.config .station-add {
+    text-align: right;
+    padding: 15px 10px 10px 10px;
 }
 
-.config .station-name,
-.config .station-edit {
+.config .station-block {
+    padding: 10px 0px 10px 0px;
+}
+
+.config .station-block .station-name,
+.config .station-block .station-edit {
     
 }
 
-.config .station-edit {
+.config .station-block .station-edit {
     text-align: right;
 }
 
+.config .station-add a,
 .config .station-edit a {
     color: #ffffff;
 }

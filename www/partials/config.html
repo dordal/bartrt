@@ -1,5 +1,5 @@
 <div class="app config" ng-controller="ConfigCtrl" ng-init="loadPreferences()">
-   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
               <a class="navbar-brand" href="#">Station Setup</a>
@@ -13,25 +13,18 @@
     </div>
     <div class="body">
         <div class="container">
-            <div class="col-xs-12">
-                Select the stations that you use:
+            <div class="station-add col-xs-12">
+                <a href="#/stationlist/add"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <div class="station-block col-xs-12" ng-repeat="station in stations">
                 <div class="station-name col-xs-9">
                     {{station.name}}
                 </div>
                 <div class="station-edit col-xs-3">
-                    <a href="#/select-station"><span class="glyphicon glyphicon-edit"></span></a>
-                    <a href="#" ng-click="deleteStation(station)"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a ng-click="deleteStation(station)"><span class="glyphicon glyphicon-remove"></span></a>
                 </div>
-<!--                <select ng-change="savePreferences()" ng-model="station.abbreviation" ng-options="stationObject.abbr as stationObject.name for (abbr, stationObject) in stationList">
-                <option value="">-- chose station --</option>
-                </select><a ng-click="deleteStation(station)" href="">del station</a><br>
--->
-                
             </div>
             <div class="col-xs-12">
-                <a ng-click="addStation()" href="">add station</a>
                 <p>{{stations}}</p>
             </div>            
         </div>

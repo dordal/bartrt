@@ -16,8 +16,9 @@ var BartRT = angular.module('bartRT', ['LocalStorageModule','ngRoute'])
 	// configure routing
 	.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
-		when('/arrivals', {templateUrl: 'partials/arrivals.html', controller: 'ArrivalsCtrl'}).
+		when('/arrivals/:station?', {templateUrl: 'partials/arrivals.html', controller: 'ArrivalsCtrl'}).
 		when('/config', {templateUrl: 'partials/config.html', controller: 'ConfigCtrl'}).
+		when('/stationlist/:action', {templateUrl: 'partials/stationlist.html', controller: 'StationListCtrl'}).		
 		otherwise({redirectTo: '/arrivals'});
 	}])
 
@@ -37,11 +38,8 @@ var BartRT = angular.module('bartRT', ['LocalStorageModule','ngRoute'])
 	.run(function (localStorageService) {
 		var stations = localStorageService.get('stations');
 		if (stations == null) {
-            localStorageService.add('stations',[{ abbreviation: '12TH'}, {abbreviation: 'EMBR'}]);
+			// TODO: Possibly poll the BART API and get the first two stations or something, rather than hardcode
+			// this data here
+            localStorageService.add('stations',[{ abbreviation: '12TH', name: '12th St. Oakland City Center'}, {abbreviation: 'EMBR', name: 'Embarcadero'}]);
         }
-
-        // add a 20px iOS 7 header. See https://gist.github.com/shazron/6602131
-		if(navigator.userAgent.match(/iPhone OS 7/)) {
-			document.body.style.marginTop = "20px";
-		}
 	});
