@@ -10,38 +10,11 @@
 //
 BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'localStorageService', 'bartApi', function($scope, $location, $routeParams, localStorageService, bartApi) { 
 
-    // uncomment to update the local station storage
+    // optional parameter to load a single station
+    $scope.station = $routeParams.station;
+
+    // uncomment to force-update the local station storage with sample data
     // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
-
-
-    /*
-    $scope.stations = [{
-        name: 'Fremont',
-        abbreviation: 'FRMT',
-        etd: [{
-            name: 'Embarcadero',
-            abbreviation: 'EMCD',
-            trains: [{
-                minutes: 2,
-                length: 6
-            }, {
-                minutes: 12,
-                length: 10
-            }]
-        }, {
-            name: 'Richmond',
-            abbreviation: 'RICH',
-            trains: [{
-                minutes: 7,
-                length: 5
-            }, {
-                minutes: 14,
-                length: 9
-            }]
-        },
-        ]
-    }
-    */
 
     //
     // load arrival times
@@ -52,7 +25,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
 
         // check whether we were passed a station (e.g. #/stations/19th), and either display just
         // that station, or load all stations from local storage.
-        if ( $routeParams.station ) {
+        if ( $scope.station ) {
             $scope.stations = [{ abbreviation: $routeParams.station}];
         } else {
             $scope.stations = localStorageService.get('stations');
@@ -78,7 +51,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
 //
 // Config Controller
 //
-BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', function($scope, localStorageService, bartApi) {
+BartRT.controller('ConfigCtrl', ['$scope', '$location', '$routeParams', 'localStorageService', 'bartApi', function($scope, $location, $routeParams, localStorageService, bartApi) {
 
     $scope.stationList = new Object();
     $scope.stations = localStorageService.get('stations');
@@ -102,37 +75,6 @@ BartRT.controller('ConfigCtrl', ['$scope', 'localStorageService', 'bartApi', fun
         });
     },
 
-    //
-    // save preference data
-    //
-    $scope.savePreferences = function() {
-
-        // assign station names & verify no duplicates
-        for (var idx=0; idx < $scope.stations.length; idx++) {
-            // TODO: duplicate check. Go through the list and make sure there are no duplicates
-            // If there are, we can reasonably assume the last added item was the duplicate,
-            // and should be removed. NOTE this doesn't quite work; if somebody changes an existing
-            // entry to a duplicate we won't know which one to delete. Maybe we need to figure out the
-            // changed value somehow and pass it in.
-
-            // set the station name; look it up in the station list
-            $scope.stations[idx].name = $scope.stationList[$scope.stations[idx].abbreviation].name;
-        }
-
-        localStorageService.add('stations',$scope.stations);
-
-    },
-
-    //
-    // add a station
-    //
-    $scope.addStation = function() {
-        // we add a new element to the array but we don't want to save
-        // to local storage here, because the user hasn't picked which
-        // station they want to add yet
-        $scope.stations.push({'name': null, 'abbreviation': null});
-    },
-
     // 
     // delete a station
     // 
@@ -150,6 +92,7 @@ BartRT.controller('StationListCtrl', ['$scope', '$location', '$routeParams', 'lo
 
     $scope.stationList = new Object();
     $scope.stations = localStorageService.get('stations');
+    $scope.action = $routeParams.action;
 
     // 
     // load preference data
@@ -171,17 +114,24 @@ BartRT.controller('StationListCtrl', ['$scope', '$location', '$routeParams', 'lo
     }
 
     // 
-    // select a station
+    // select a station and either do a quick lookup, or save it to local storage
     //
     $scope.selectStation = function(station) {
-
-        console.log(station);
-        console.log();
-
         if($routeParams.action == 'lookup') {
             $location.path('arrivals/' + station.abbr);
         } else {
+
+            // dedup: if we're adding a station we already have, remove the old one
+            // so the 'new' one goes on the bottom of the list.
+            for (var idx=0; idx < $scope.stations.length; idx++) {
+                if ($scope.stations[idx].abbreviation == station.abbr) {
+                    $scope.stations.splice(idx,1);
+                }
+            }
+
             $scope.stations.push({'name': station.name, 'abbreviation': station.abbr});
+
+            // save to local storage, and refresh back to config page.
             localStorageService.add('stations',$scope.stations);
             $location.path('config');
         }
