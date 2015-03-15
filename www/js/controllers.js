@@ -16,6 +16,9 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
     // uncomment to force-update the local station storage with sample data
     // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
 
+    // add a listener for the app resuming, so we can refresh. Needs to be wrapped in the deviceready listener
+    // document.addEventListener("deviceready", function(){ document.addEventListener("resume", $scope.loadETD, false); }, false);
+
     //
     // load arrival times
     //

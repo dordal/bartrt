@@ -1,4 +1,4 @@
-<div class="app config" ng-controller="StationListCtrl" ng-init="loadStationList()">
+<div class="app stationlist" ng-controller="StationListCtrl" ng-init="loadStationList()">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -15,8 +15,13 @@
     </div>
     <div class="body">
         <div class="container">
-            <div class="station-name col-xs-12" ng-click="selectStation(station)" ng-repeat="station in stationList">
-                {{station.name}}
+            <div class="station-list col-xs-12" ng-click="selectStation(station)" ng-repeat="station in stationList">
+                <div class="station-name col-xs-9">
+                    {{station.name}}
+                </div>
+                <div class="station-select col-xs-3">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </div>            
             </div>
         </div>
     </div>

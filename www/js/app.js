@@ -42,4 +42,5 @@ var BartRT = angular.module('bartRT', ['LocalStorageModule','ngRoute'])
 			// this data here
             localStorageService.add('stations',[{ abbreviation: '12TH', name: '12th St. Oakland City Center'}, {abbreviation: 'EMBR', name: 'Embarcadero'}]);
         }
+        
 	});

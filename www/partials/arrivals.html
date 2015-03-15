@@ -17,7 +17,7 @@
     <div class="container">
         <div class="body">
             <div class="station-block col-xs-12" ng-repeat="station in stations">
-                <h1>{{station.name}} ( {{station.abbreviation}} ) </h1>
+                <h1>{{station.name}}</h1>
                 <div class="train-block" ng-repeat="etd in station.etd">
                     <div class="train-color train-color-{{etd.color}}"></div>
                     <div class="train-arrival">
@@ -27,6 +27,7 @@
                 </div>
                 <div ng-show="!station.etd.length">No trains</div>
            </div>
+           <div>&nbsp;</div>
         </div>
     </div>
 </div>

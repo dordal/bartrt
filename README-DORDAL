@@ -5,8 +5,15 @@ Angular JS w Phonegap 3.5 & Bootstrap
 
 STATUS 7 Feb 2015 - Hackathon
 - all basic functionality working
-- Needs styling, bug testing
-- station add feature needs de-duplication code
+- Needs styling, bug testing. See if I can figure out how to add a little color.
+- Ideally would also have drag & drop sort order for stations
+- Need to add loading states and automatic refresh
+- pull to refresh? but would be nice if header didn't pull down
+- error handling if API returns bad data
+- refresh button stays white for some reason
+- refresh on resume. see line 20 controllers.js for the first attempt
+- need to develop an icon
+- on quick lookup screen, need to add a button for another quick lookup
 
 STATUS 22 JUNE 2014
 - Am working on the config page. 
@@ -43,6 +50,15 @@ Launch Todo
 - remember to change the <access origin="*" /> in config.xml
 - switch to minified libraries
 - get a real API key, set it as a constant, etc.
+
+Future Features
+- Add a 'to' station to filter the list of trains
+- Add BART alert notifications
+
+Style
+- 'Dark' blurred BART map for the splash screen with a white logo over it
+- Interval font... figure out what that is
+- 
 
 Misc
 - There could be an issue where the phonegap libraries aren't available when angular needs them. Angular doesn't wait for the phonegap 'deviceready' function to fire, so it may try to call some phonegap function before its loaded. We can probably solve this with an angular promise if it comes up; see here: https://github.com/btford/briantford.com/blob/master/jade/blog/angular-phonegap.md

@@ -5,6 +5,13 @@
  *
  */
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/SourceSansPro-Regular.woff2') format('woff2');
+}
+
 /*
  * General App Styles
  *
@@ -20,7 +27,8 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#2f2f2f;
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif; */
     font-size:12px;
     height:100%;
     width:100%;
@@ -39,6 +47,12 @@ body {
 
 .navbar .navbar-nav {
     float: right;
+    font-size: 14px;
+}
+
+.navbar .navbar-brand {
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
 /*
@@ -52,13 +66,15 @@ body {
 }
 
 .arrivals .station-block h1 {
-    font-size:15px;
+    font-size:20px;
     font-weight:normal;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .arrivals .train-block {
     clear:both;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .arrivals .train-arrival {
@@ -105,15 +121,16 @@ body {
 .config .station-add {
     text-align: right;
     padding: 15px 10px 10px 10px;
+    border-bottom: 1px dotted #555;
 }
 
 .config .station-block {
     padding: 10px 0px 10px 0px;
+    border-bottom: 1px dotted #555;
 }
 
-.config .station-block .station-name,
-.config .station-block .station-edit {
-    
+.config .station-block .station-name {
+    font-size: 20px;
 }
 
 .config .station-block .station-edit {
@@ -122,5 +139,21 @@ body {
 
 .config .station-add a,
 .config .station-edit a {
-    color: #ffffff;
+    color: #999;
+}
+
+/*
+ * Station List
+ *
+ */
+
+.stationlist .station-list {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px dotted #555;
+    font-size: 20px;
+}
+
+.stationlist .station-select {
+    text-align: right;
+    color: #999;
 }
