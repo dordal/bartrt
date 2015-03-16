@@ -56,6 +56,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
                     for (i in bartData.station.etd[e].estimate) {
                         var train = new Array();
                         train.minutes = bartData.station.etd[e].estimate[i].minutes;
+                        train.minutes = train.minutes.replace('Leaving','Now');
                         train.length = bartData.station.etd[e].estimate[i].length;
 
                         etd.trains.push(train);

@@ -5,12 +5,9 @@
  *
  */
 
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/SourceSansPro-Regular.woff2') format('woff2');
-}
+/* NB: I'd really like to have this locally, but it appears google has a restriction from running
+       fonts locally. It doesn't work in FF or on-device, but oddly does work in Chrome. */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 /*
  * General App Styles
@@ -55,6 +52,10 @@ body {
     font-size: 20px;
 }
 
+.navbar .navbar-nav > li > a:hover {
+    color: #999;
+}
+
 /*
  * Arrivals
  *
@@ -78,7 +79,7 @@ body {
 }
 
 .arrivals .train-arrival {
-    display:inline-block;
+    display:inline;
 }
 
 .arrivals .train-color {
