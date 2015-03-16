@@ -19,6 +19,8 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
         //
         getETD: function(station, idx) {
 
+            station.loaded = false;
+
             var response = $q.defer();
 
             // $http.get('/test/bart/' + station.abbreviation + '.xml')
@@ -70,6 +72,8 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
                     station.etd.push(etd);
                 }
+
+                station.loaded = true;
 
                 response.resolve(station);
 

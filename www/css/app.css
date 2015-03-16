@@ -94,6 +94,7 @@ body {
 .arrivals .station-block {
    float:left;
    clear: both;
+   font-size: 16px;
 }
 
 .arrivals .station-block h1 {
@@ -105,7 +106,6 @@ body {
 
 .arrivals .train-block {
     clear:both;
-    font-size: 16px;
 }
 
 .arrivals .train-arrival {

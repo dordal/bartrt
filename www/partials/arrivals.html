@@ -25,7 +25,8 @@
                         <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span> min
                     </div>
                 </div>
-                <div ng-show="!station.etd.length">No trains</div>
+                <div ng-show="!station.loaded">Loading...</div>
+                <div ng-show="station.loaded && !station.etd.length">No trains</div>
            </div>
            <div>&nbsp;</div>
         </div>
