@@ -3,6 +3,14 @@ BARTRT App
 Development Env
 Angular JS w Phonegap 3.5 & Bootstrap
 
+STATUS 15 MARCH 2015
+- fixed most bugs; added better styling, refresh on resume, etc. etc. ... app is fairly stable now
+- need to update to the newest bootstrap, and probably compile a min version
+- still need to do an icon and a splash screen. Maybe a dark bart map for the splash screen?
+- pull to refresh? the button works for now though.
+- possibly look at using bower
+- on quick lookup screen, need to add a button for another quick lookup
+
 STATUS 7 Feb 2015 - Hackathon
 - all basic functionality working
 - Needs styling, bug testing. See if I can figure out how to add a little color.
@@ -13,7 +21,6 @@ STATUS 7 Feb 2015 - Hackathon
 - refresh button stays white for some reason
 - refresh on resume. see line 20 controllers.js for the first attempt
 - need to develop an icon
-- on quick lookup screen, need to add a button for another quick lookup
 
 STATUS 22 JUNE 2014
 - Am working on the config page. 
@@ -32,34 +39,14 @@ STATUS 2 Jan 2014
   - Need to figure out what happens when an error occurs
 - Will need to get my own provisioning profile and iOS dev account at some point.
 
-Overall Todo
-X get phonegap 3.0 setup; compile apps for ios and android
-X get a debug method in place ( weinre in this case )
-X CSS debugging & JS debugging in browser.... need to learn more about this.
-X need to do some prototype code with angular; see what I can do. 
-  X data binding
-  X api call to BART API
-  X event handling
-X Need to get topcoat installed; setup a simple UI
-- need to build out app
-  - tasks TBD
-- need to develop icon and build actual app binary
-- need to figure out how to deploy to app store
-
 Launch Todo
 - remember to change the <access origin="*" /> in config.xml
 - switch to minified libraries
-- get a real API key, set it as a constant, etc.
 
 Future Features
 - Add a 'to' station to filter the list of trains
 - Add BART alert notifications
-
-Style
-- 'Dark' blurred BART map for the splash screen with a white logo over it
-- Interval font... figure out what that is
-- 
+- automatic update feature ( every 30s or so? )
 
 Misc
-- There could be an issue where the phonegap libraries aren't available when angular needs them. Angular doesn't wait for the phonegap 'deviceready' function to fire, so it may try to call some phonegap function before its loaded. We can probably solve this with an angular promise if it comes up; see here: https://github.com/btford/briantford.com/blob/master/jade/blog/angular-phonegap.md
 - When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the space between columns = 20px instead of 30px
