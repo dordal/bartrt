@@ -8,7 +8,7 @@
 //
 // Angular Initialization + Dependency Injection
 //
-var BartRT = angular.module('bartRT', ['LocalStorageModule','ngRoute','ngAnimate'])
+var BartRT = angular.module('BartRT', ['LocalStorageModule','ngRoute','ngAnimate'])
 
 	// setup constants
 	.constant('bartApiKey', 'M9KV-TWSU-T8DT-IKWW')

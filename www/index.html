@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="bartRT">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -34,8 +34,23 @@
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>
         <script type="text/javascript">
-           // document.addEventListener('deviceready', function(){ alert('i am ready')}, false);
-           // document.addEventListener('resume', function(){ alert('i am resuming')}, false);
+            // Because we're running inside phonegap, we have to bootstrap angular manually, after
+            // phonegap is ready.
+            function bootstrapAngular() {
+                angular.element(document).ready(function() {
+                    var domElement = document.querySelector('html');
+                    angular.bootstrap(domElement, ['BartRT']);
+                });
+            }
+
+            // If we're *not* inside phonegap (e.g. during dev), we bootstrap immediately
+            if (document.URL.indexOf( 'http://' ) === -1 
+                    && document.URL.indexOf( 'https://' ) === -1) {
+                document.addEventListener("deviceready", function(){bootstrapAngular();}, false);
+            } else {
+                bootstrapAngular();
+            }
+
         </script>
     </head>
     <body>

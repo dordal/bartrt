@@ -16,15 +16,27 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
     // uncomment to force-update the local station storage with sample data
     // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
 
-    // add a listener for the app resuming, so we can refresh. Needs to be wrapped in the deviceready listener
-    // document.addEventListener("deviceready", function(){ document.addEventListener("resume", $scope.loadETD, false); }, false);
+    // add a listener for the app resuming, so we can refresh. We only want to add this once; easiest way is to record whether we've added it.
+    if($scope.resumeListenerAdded != true) {
+        document.addEventListener("resume", function(){ loadStationETD(); }, false);
+        $scope.resumeListenerAdded = true;        
+    }
 
     //
     // load arrival times
     //
     $scope.loadETD = function() {
+        loadStationETD();
+    }
 
-        // TODO: put up a loading icon which gets removed when data is loaded
+    //
+    // load arrival times... part 2
+    //
+    // If I call $scope.loadETD() from the resume event (above), angular seems to be making a copy of $scope. The function runs on
+    // resume, but the view is never updated. If I call it this way, with a local function, it works fine, presumably because I'm 
+    // not passing a copy of $scope to an anonymous function.
+    //
+    loadStationETD = function() {
 
         // check whether we were passed a station (e.g. #/stations/19th), and either display just
         // that station, or load all stations from local storage.
@@ -47,6 +59,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
                 $scope.stations[station.idx] = station;
             });
         }
+
         $scope.currentTime = Date.now();
     }
 }]);

@@ -79,7 +79,8 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
             })
             .error(function(data, status, headers, config) {
-                // TODO: handle error
+                alert('Unable to load data for ' + station.abbreviation);
+                response.reject('error');
             });
 
             return response.promise;
@@ -102,7 +103,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
             })
             .error(function(data, status, headers, config) {
-                // TODO: handle error
+                alert('Unable to load station list');
                 response.reject('error');
             });
 
