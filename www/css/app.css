@@ -37,6 +37,36 @@ body {
    color: #fff;
 }
 
+.view-animate-container {
+  position: relative;
+}
+
+.view-animate {
+
+}
+ 
+.view-animate.ng-enter, .view-animate.ng-leave {
+   /* margin-top: -50px; */
+    position: absolute;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    display:block;
+    width: 100%;
+}
+
+.view-animate.ng-animate .navbar {
+    margin-top: -50px;                      /* pull the navbar back up */
+}
+
+.view-animate.ng-enter {
+  -webkit-transform: translate3d(100%, 0, 0);
+}
+.view-animate.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.view-animate.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(-100%, 0, 0);
+}
+
 /*
  * Header
  *
