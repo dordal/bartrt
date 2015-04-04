@@ -110,13 +110,14 @@ body {
 
 .arrivals .train-arrival {
     display:inline;
+    font-size: 18px;
 }
 
 .arrivals .train-color {
     padding: 2px;
     margin: 4px 2px 0px 0px;
-    width: 9px;
-    height: 9px;
+    width: 4px;
+    height: 12px;
     display: inline-block;
 }
 

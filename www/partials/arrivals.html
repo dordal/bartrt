@@ -19,10 +19,13 @@
             <div class="station-block col-xs-12" ng-repeat="station in stations">
                 <h1>{{station.name}}</h1>
                 <div class="train-block" ng-repeat="etd in station.etd">
-                    <div class="train-color train-color-{{etd.color}}"></div>
-                    <div class="train-arrival">
-                        {{etd.name}}: 
-                        <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span> min
+                    <div class="train-arrival col-xs-8">
+                     <div class="train-color train-color-{{etd.color}}"></div>
+                        {{etd.name}}
+                        
+                    </div>
+                    <div class="train-arrival col-xs-4">
+                        <span ng-repeat="train in etd.trains">{{train.minutes}}<span ng-if="$last != true">,</span> </span>
                     </div>
                 </div>
                 <div ng-show="!station.loaded">Loading...</div>

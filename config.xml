@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
-    <preference name="orientation" value="default" />
+    <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
@@ -28,6 +28,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#222222" />
     <preference name="StatusBarStyle" value="lightcontent" />
+<!--
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -46,7 +47,9 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+-->
     <icon src="icon.png" />
+<!--
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
@@ -72,6 +75,21 @@
     <gap:splash gap:platform="ios" height="1024" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
-    
+    -->
+    <platform name="ios">
+        <splash src="www/res/screen/ios/screen-iphone-portrait.png" width="320" height="480"/>
+        <splash src="www/res/screen/ios/screen-ipad-landscape-2x.png" width="2048" height="1536"/>
+        <splash src="www/res/screen/ios/screen-ipad-landscape-2x.png" width="2048" height="1536"/>
+        <splash src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" height="768"/>
+        <splash src="www/res/screen/ios/screen-iphone-portrait-2x.png" width="640" height="960"/>
+        <splash src="www/res/screen/ios/screen-ipad-portrait.png" width="768" height="1024"/>
+        <splash src="www/res/screen/ios/screen-ipad-portrait-2x.png" width="1536" height="2048"/>
+        <splash src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136"/>
+        <splash src="www/res/screen/ios/screen-iphone-portrait-667h.png" width="750" height="1334"/>
+        <splash src="www/res/screen/ios/screen-iphone-portrait-736h.png" width="1242" height="2208"/>
+        <splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
+    </platform>
+
+
     <access origin="*" />
 </widget>
