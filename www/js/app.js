@@ -40,7 +40,7 @@ var BartRT = angular.module('BartRT', ['LocalStorageModule','ngRoute','ngAnimate
 		if (stations == null) {
 			// TODO: Possibly poll the BART API and get the first two stations or something, rather than hardcode
 			// this data here
-            localStorageService.add('stations',[{ abbreviation: '12TH', name: '12th St. Oakland City Center'}, {abbreviation: 'EMBR', name: 'Embarcadero'}]);
+            localStorageService.add('stations',[{ abbr: '12TH', name: '12th St. Oakland City Center'}, {abbr: 'EMBR', name: 'Embarcadero'}]);
         }
         
 	});

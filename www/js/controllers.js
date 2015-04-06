@@ -14,7 +14,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
     $scope.station = $routeParams.station;
 
     // uncomment to force-update the local station storage with sample data
-    // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbreviation: '12TH'}, {name: 'Embarcadero', abbreviation: 'EMBR'}, {name: 'Orinda',abbreviation: 'ORIN'}]);
+    // localStorageService.add('stations',[{ name: '12th St. Oakland City Center', abbr: '12TH'}, {name: 'Embarcadero', abbr: 'EMBR'}, {name: 'Orinda',abbr: 'ORIN'}]);
 
     // add a listener for the app resuming, so we can refresh. We only want to add this once; easiest way is to record whether we've added it.
     if($scope.resumeListenerAdded != true) {
@@ -35,13 +35,13 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
         // dedup: if we're adding a station we already have, simply skip it and 
         // go back to the arrivals screen
         for (var idx=0; idx < $scope.stations.length; idx++) {
-            if ($scope.stations[idx].abbreviation == station.abbreviation) {
+            if ($scope.stations[idx].abbr == station.abbr) {
                 $location.path('arrivals');
                 return;
             }
         }
 
-        $scope.stations.push({'name': station.name, 'abbreviation': station.abbreviation});
+        $scope.stations.push({'name': station.name, 'abbr': station.abbr});
 
         // save to local storage, and refresh back to config page.
         localStorageService.add('stations',$scope.stations);
@@ -61,7 +61,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
         // that station, or load all stations from local storage. Also set a flag so the interface
         // can react appropriately depending on whether we have one or multiple stations.
         if ( $scope.station ) {
-            $scope.stations = [{ abbreviation: $routeParams.station}];
+            $scope.stations = [{ abbr: $routeParams.station}];
             $scope.singleStationView = true;
         } else {
             $scope.stations = localStorageService.get('stations');
@@ -105,7 +105,7 @@ BartRT.controller('ConfigCtrl', ['$scope', '$location', '$routeParams', 'localSt
         // before loading the station list
         bartApi.getStations().then(function(stationList) {
 
-            // convert the data from BART to an object with station abbreviations as keys; makes
+            // convert the data from BART to an object with station abbrs as keys; makes
             // for easier use later
             for (var idx=0; idx < stationList.length; idx++) {
                 $scope.stationList[stationList[idx].abbr] = stationList[idx];
@@ -143,7 +143,7 @@ BartRT.controller('StationListCtrl', ['$scope', '$location', '$routeParams', 'lo
         // before loading the station list
         bartApi.getStations().then(function(stationList) {
 
-            // convert the data from BART to an object with station abbreviations as keys; makes
+            // convert the data from BART to an object with station abbrs as keys; makes
             // for easier use later
             for (var idx=0; idx < stationList.length; idx++) {
                 $scope.stationList[stationList[idx].abbr] = stationList[idx];
@@ -162,12 +162,12 @@ BartRT.controller('StationListCtrl', ['$scope', '$location', '$routeParams', 'lo
             // dedup: if we're adding a station we already have, remove the old one
             // so the 'new' one goes on the bottom of the list.
             for (var idx=0; idx < $scope.stations.length; idx++) {
-                if ($scope.stations[idx].abbreviation == station.abbr) {
+                if ($scope.stations[idx].abbr == station.abbr) {
                     $scope.stations.splice(idx,1);
                 }
             }
 
-            $scope.stations.push({'name': station.name, 'abbreviation': station.abbr});
+            $scope.stations.push({'name': station.name, 'abbr': station.abbr});
 
             // save to local storage, and refresh back to config page.
             localStorageService.add('stations',$scope.stations);

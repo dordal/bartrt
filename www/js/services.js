@@ -15,7 +15,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
         // Get a station object and load the ETD data from
         // the BART API, and then parses it into an array.
         // 
-        // @param station an abbreviation for a BART station, e.g. 12TH
+        // @param station an abbr for a BART station, e.g. 12TH
         //
         getETD: function(station, idx) {
 
@@ -23,8 +23,8 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
             var response = $q.defer();
 
-            // $http.get('/test/bart/' + station.abbreviation + '.xml')
-            $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=' + bartApiKey + '&orig=' + station.abbreviation )
+            // $http.get('/test/bart/' + station.abbr + '.xml')
+            $http.get('http://api.bart.gov/api/etd.aspx?cmd=etd&key=' + bartApiKey + '&orig=' + station.abbr )
             .success(function(data, status, headers, config) {
 
                 x2js = new X2JS();
@@ -32,7 +32,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
                 // assign basic station data
                 station.name = bartData.station.name;
-                station.abbreviation = bartData.station.abbr;
+                station.abbr = bartData.station.abbr;
                 station.idx = idx;  // index in the stations array
                 station.etd = new Array();
 
@@ -48,7 +48,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
                     var etd = new Array();
                     etd.name = bartData.station.etd[e].destination;
-                    etd.abbreviation = bartData.station.etd[e].abbreviation;
+                    etd.abbr = bartData.station.etd[e].abbr;
                     etd.trains = new Array();
 
                     // same problem as above; do another array conversion
@@ -79,7 +79,7 @@ BartRT.factory('bartApi', ['$http', '$q', 'bartApiKey', function($http, $q, bart
 
             })
             .error(function(data, status, headers, config) {
-                alert('Unable to load data for ' + station.abbreviation);
+                alert('Unable to load data for ' + station.abbr);
                 response.reject('error');
             });
 

@@ -17,7 +17,7 @@
     <div class="container">
         <div class="body">
             <div class="station-block col-xs-12" ng-repeat="station in stations">
-                <h1>{{station.name}} <span ng-if="singleStationView">(<a ng-click="addStation(station)" href=""><span class="glyphicon glyphicon-plus"></span></a>)</span></h1>
+                <h1>{{station.name}} <span ng-if="singleStationView"><a class="add-station-button" ng-click="addStation(station)" href="">(<span class="glyphicon glyphicon-plus"></span>)</a></span></h1>
                 <div class="train-block" ng-repeat="etd in station.etd">
                     <div class="train-arrival train-arrival-station col-xs-8">
                      <div class="train-color train-color-{{etd.color}}"></div>

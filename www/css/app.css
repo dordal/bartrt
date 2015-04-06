@@ -117,7 +117,8 @@ body {
 }
 
 .train-arrival-time {
-    padding-right: 0px;
+    text-align: right;
+    padding-right: 5px;
 }
 
 .arrivals .train-color {
@@ -150,6 +151,18 @@ body {
 
 .arrivals .train-color-white {
     background-color: #ffffff;
+}
+
+.arrivals a.add-station-button {
+    color: #fff;
+}
+
+.arrivals a.add-station-button:hover {
+    text-decoration: none;
+}
+
+.arrivals a.add-station-button .glyphicon {
+    font-size: 16px;
 }
 
 /*
