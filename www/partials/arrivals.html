@@ -6,10 +6,10 @@
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li ng-if="!station"><a href="#/config"><span class="glyphicon glyphicon-pencil"></span></a></li>
-                <li ng-if="!station"><a href="#/stationlist/lookup"><span class="glyphicon glyphicon-record"></span></a></li>
+                <li ng-if="!singleStationView"><a href="#/config"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                <li ng-if="!singleStationView"><a href="#/stationlist/lookup"><span class="glyphicon glyphicon-record"></span></a></li>
                 <li><a ng-click="loadETD()"><span class="glyphicon glyphicon-refresh"></span></a></li>
-                <li ng-if="station"><a href="#/arrivals"><span class="glyphicon glyphicon-remove"></span></a></li>
+                <li ng-if="singleStationView"><a href="#/arrivals"><span class="glyphicon glyphicon-remove"></span></a></li>
               </ul>
             </div>
         </div>
@@ -17,7 +17,7 @@
     <div class="container">
         <div class="body">
             <div class="station-block col-xs-12" ng-repeat="station in stations">
-                <h1>{{station.name}}</h1>
+                <h1>{{station.name}} <span ng-if="singleStationView">(<a ng-click="addStation(station)" href=""><span class="glyphicon glyphicon-plus"></span></a>)</span></h1>
                 <div class="train-block" ng-repeat="etd in station.etd">
                     <div class="train-arrival train-arrival-station col-xs-8">
                      <div class="train-color train-color-{{etd.color}}"></div>
@@ -30,6 +30,7 @@
                 </div>
                 <div ng-show="!station.loaded">Loading...</div>
                 <div ng-show="station.loaded && !station.etd.length">No trains</div>
+
            </div>
            <div>&nbsp;</div>
         </div>

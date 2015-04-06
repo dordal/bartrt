@@ -27,6 +27,25 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
     //
     $scope.loadETD = function() {
         loadStationETD();
+    },
+
+    $scope.addStation = function(station) {
+        $scope.stations = localStorageService.get('stations');
+
+        // dedup: if we're adding a station we already have, simply skip it and 
+        // go back to the arrivals screen
+        for (var idx=0; idx < $scope.stations.length; idx++) {
+            if ($scope.stations[idx].abbreviation == station.abbreviation) {
+                $location.path('arrivals');
+                return;
+            }
+        }
+
+        $scope.stations.push({'name': station.name, 'abbreviation': station.abbreviation});
+
+        // save to local storage, and refresh back to config page.
+        localStorageService.add('stations',$scope.stations);
+        $location.path('arrivals');
     }
 
     //
@@ -39,11 +58,14 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
     loadStationETD = function() {
 
         // check whether we were passed a station (e.g. #/stations/19th), and either display just
-        // that station, or load all stations from local storage.
+        // that station, or load all stations from local storage. Also set a flag so the interface
+        // can react appropriately depending on whether we have one or multiple stations.
         if ( $scope.station ) {
             $scope.stations = [{ abbreviation: $routeParams.station}];
+            $scope.singleStationView = true;
         } else {
             $scope.stations = localStorageService.get('stations');
+            $scope.singleStationView = false;
         }
 
         // iterate through each station in the list, and load data for it
