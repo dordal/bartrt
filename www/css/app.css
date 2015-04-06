@@ -94,14 +94,14 @@ body {
 .arrivals .station-block {
    float:left;
    clear: both;
-   font-size: 16px;
+   font-size: 18px;
 }
 
 .arrivals .station-block h1 {
     font-size:20px;
     font-weight:normal;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .arrivals .train-block {
@@ -110,7 +110,14 @@ body {
 
 .arrivals .train-arrival {
     display:inline;
-    font-size: 18px;
+}
+
+.train-arrival-station {
+    padding-left: 5px;
+}
+
+.train-arrival-time {
+    padding-right: 0px;
 }
 
 .arrivals .train-color {
@@ -167,6 +174,10 @@ body {
 
 .config .station-block .station-edit {
     text-align: right;
+}
+
+.config .station-block .station-edit .glyphicon {
+    line-height: 28px
 }
 
 .config .station-add a,
