@@ -23,7 +23,7 @@ BartRT.controller('DeparturesCtrl', ['$scope', '$location', '$routeParams', 'loc
     }
 
     //
-    // load arrival times
+    // load departure times
     //
     $scope.loadETD = function() {
         loadStationETD();
@@ -49,7 +49,7 @@ BartRT.controller('DeparturesCtrl', ['$scope', '$location', '$routeParams', 'loc
     }
 
     //
-    // load arrival times... part 2
+    // load departure times... part 2
     //
     // If I call $scope.loadETD() from the resume event (above), angular seems to be making a copy of $scope. The function runs on
     // resume, but the view is never updated. If I call it this way, with a local function, it works fine, presumably because I'm 

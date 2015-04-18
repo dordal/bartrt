@@ -108,15 +108,15 @@ body {
     clear:both;
 }
 
-.departures .train-arrival {
+.departures .train-departure {
     display:inline;
 }
 
-.train-arrival-station {
+.train-departure-station {
     padding-left: 5px;
 }
 
-.train-arrival-time {
+.train-departure-time {
     text-align: right;
     padding-right: 5px;
 }
