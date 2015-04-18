@@ -6,9 +6,9 @@
  */
 
 //
-// Arrivals Controller
+// Departures Controller
 //
-BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'localStorageService', 'bartApi', function($scope, $location, $routeParams, localStorageService, bartApi) { 
+BartRT.controller('DeparturesCtrl', ['$scope', '$location', '$routeParams', 'localStorageService', 'bartApi', function($scope, $location, $routeParams, localStorageService, bartApi) { 
 
     // optional parameter to load a single station
     $scope.station = $routeParams.station;
@@ -33,10 +33,10 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
         $scope.stations = localStorageService.get('stations');
 
         // dedup: if we're adding a station we already have, simply skip it and 
-        // go back to the arrivals screen
+        // go back to the departures screen
         for (var idx=0; idx < $scope.stations.length; idx++) {
             if ($scope.stations[idx].abbr == station.abbr) {
-                $location.path('arrivals');
+                $location.path('departures');
                 return;
             }
         }
@@ -45,7 +45,7 @@ BartRT.controller('ArrivalsCtrl', ['$scope', '$location', '$routeParams', 'local
 
         // save to local storage, and refresh back to config page.
         localStorageService.add('stations',$scope.stations);
-        $location.path('arrivals');
+        $location.path('departures');
     }
 
     //
@@ -156,7 +156,7 @@ BartRT.controller('StationListCtrl', ['$scope', '$location', '$routeParams', 'lo
     //
     $scope.selectStation = function(station) {
         if($routeParams.action == 'lookup') {
-            $location.path('arrivals/' + station.abbr);
+            $location.path('departures/' + station.abbr);
         } else {
 
             // dedup: if we're adding a station we already have, remove the old one

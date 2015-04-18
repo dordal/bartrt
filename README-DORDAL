@@ -3,6 +3,23 @@ BARTRT App
 Development Env
 Angular JS w Phonegap 3.5 & Bootstrap
 
+STATUS 06 APRIL 2015
+- Change name to 'Real Time Departures'
+- Fix 'No Trains' layout bug
+- Add splash screen & icon
+- Update bootstrap and compile a min version
+- Figure out how to compile only for iOS and release on the app store
+- Write a good description; remember to say
+  - No Ads
+  - Open Source / How to contribute
+  - Contact me for a flyer for marketing ('Miss Your Train?')
+
+Future Features
+- Pull to refresh
+- Nearby vs. Alphabetical Station List
+- Drag to reorder stations
+- Release on Google Play & Windows Phone; try the Phonegap Build service
+
 STATUS 15 MARCH 2015
 - fixed most bugs; added better styling, refresh on resume, etc. etc. ... app is fairly stable now
 - need to update to the newest bootstrap, and probably compile a min version

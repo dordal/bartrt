@@ -16,10 +16,10 @@ var BartRT = angular.module('BartRT', ['LocalStorageModule','ngRoute','ngAnimate
 	// configure routing
 	.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
-		when('/arrivals/:station?', {templateUrl: 'partials/arrivals.html', controller: 'ArrivalsCtrl'}).
+		when('/departures/:station?', {templateUrl: 'partials/departures.html', controller: 'DeparturesCtrl'}).
 		when('/config', {templateUrl: 'partials/config.html', controller: 'ConfigCtrl'}).
 		when('/stationlist/:action', {templateUrl: 'partials/stationlist.html', controller: 'StationListCtrl'}).		
-		otherwise({redirectTo: '/arrivals'});
+		otherwise({redirectTo: '/departures'});
 	}])
 
 	// configure the http provider

@@ -1,0 +1,7 @@
+BartRT Style Guide
+------------------
+
+Background Color: #2f2f2f
+Text Color: #ffffff
+
+Font: Source Sans Pro ( Google Fonts: http://fonts.googleapis.com/css?family=Source+Sans+Pro )

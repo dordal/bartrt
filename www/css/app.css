@@ -87,28 +87,28 @@ body {
 }
 
 /*
- * Arrivals
+ * Departures
  *
  */
 
-.arrivals .station-block {
+.departures .station-block {
    float:left;
    clear: both;
    font-size: 18px;
 }
 
-.arrivals .station-block h1 {
+.departures .station-block h1 {
     font-size:20px;
     font-weight:normal;
     text-transform: uppercase;
     margin-bottom: 14px;
 }
 
-.arrivals .train-block {
+.departures .train-block {
     clear:both;
 }
 
-.arrivals .train-arrival {
+.departures .train-arrival {
     display:inline;
 }
 
@@ -121,7 +121,7 @@ body {
     padding-right: 5px;
 }
 
-.arrivals .train-color {
+.departures .train-color {
     padding: 2px;
     margin: 4px 2px 0px 0px;
     width: 4px;
@@ -129,39 +129,39 @@ body {
     display: inline-block;
 }
 
-.arrivals .train-color-yellow {
+.departures .train-color-yellow {
     background-color: #ffff33;
 }
 
-.arrivals .train-color-red {
+.departures .train-color-red {
     background-color: #ff0000;
 }
 
-.arrivals .train-color-green {
+.departures .train-color-green {
     background-color: #339933;
 }
 
-.arrivals .train-color-blue {
+.departures .train-color-blue {
     background-color: #0099cc;
 }
 
-.arrivals .train-color-orange {
+.departures .train-color-orange {
     background-color: #ff9933;
 }
 
-.arrivals .train-color-white {
+.departures .train-color-white {
     background-color: #ffffff;
 }
 
-.arrivals a.add-station-button {
+.departures a.add-station-button {
     color: #fff;
 }
 
-.arrivals a.add-station-button:hover {
+.departures a.add-station-button:hover {
     text-decoration: none;
 }
 
-.arrivals a.add-station-button .glyphicon {
+.departures a.add-station-button .glyphicon {
     font-size: 16px;
 }
 

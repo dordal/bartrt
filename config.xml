@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>BART Real-Time Arrivals</name>
+    <name>BART Real Time Departures</name>
     <description>
-        BART Real-Time Arrivals provides real-time arrival data at BART stations that you select.
+        BART Real Time Departures provides real time departure data at BART stations that you select.
     </description>
     <author email="david@ordal.com" href="http://www.ordal.com">
         David Ordal
