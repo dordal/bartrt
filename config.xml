@@ -24,6 +24,8 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
+    <!-- target only handsets (e.g. iPhone) and not tablets (e.g. iPad) -->
+    <preference name="target-device" value="handset" />
     <!-- set the statusbar to match the app background using the statusbar plugin: https://github.com/apache/cordova-plugin-statusbar/ -->
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#222222" />

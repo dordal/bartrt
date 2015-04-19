@@ -4,7 +4,7 @@ Development Env
 Angular JS w Phonegap & Bootstrap
 
 BUILD NOTES
-- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the space between columns = 20px instead of 30px
+- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the @grid-gutter-width = 20px instead of 30px. Also turn off all the jquery includes; those aren't needed
 
 FUTURE FEATURES
 - Pull to refresh
