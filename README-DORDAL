@@ -1,7 +1,25 @@
 BARTRT App
 
 Development Env
-Angular JS w Phonegap 3.5 & Bootstrap
+Angular JS w Phonegap & Bootstrap
+
+BUILD NOTES
+- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the space between columns = 20px instead of 30px
+
+FUTURE FEATURES
+- Pull to refresh
+- Nearby vs. Alphabetical Station List
+- Drag to reorder stations
+- Release on Google Play & Windows Phone; try the Phonegap Build service
+- Add a 'to' station to filter the list of trains
+- Add BART alert notifications
+- automatic update feature ( every 30s or so? )
+
+LAUNCH PREP
+- remember to change the <access origin="*" /> in config.xml
+- switch to minified libraries
+
+--------------------
 
 STATUS 06 APRIL 2015
 - Change name to 'Real Time Departures'
@@ -13,12 +31,6 @@ STATUS 06 APRIL 2015
   - No Ads
   - Open Source / How to contribute
   - Contact me for a flyer for marketing ('Miss Your Train?')
-
-Future Features
-- Pull to refresh
-- Nearby vs. Alphabetical Station List
-- Drag to reorder stations
-- Release on Google Play & Windows Phone; try the Phonegap Build service
 
 STATUS 15 MARCH 2015
 - fixed most bugs; added better styling, refresh on resume, etc. etc. ... app is fairly stable now
@@ -56,14 +68,3 @@ STATUS 2 Jan 2014
   - Need to figure out what happens when an error occurs
 - Will need to get my own provisioning profile and iOS dev account at some point.
 
-Launch Todo
-- remember to change the <access origin="*" /> in config.xml
-- switch to minified libraries
-
-Future Features
-- Add a 'to' station to filter the list of trains
-- Add BART alert notifications
-- automatic update feature ( every 30s or so? )
-
-Misc
-- When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the space between columns = 20px instead of 30px
