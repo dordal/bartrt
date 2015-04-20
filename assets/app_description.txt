@@ -1,0 +1,8 @@
+BARTRT App Description
+----------------------
+
+Are you a BART commuter? This app has one -- and only one -- purpose: to show you when your next train is departing at your favorite station(s). Unlike all the other BART apps out there, there are no system maps, no fare calculators, no timetables... just one tap and you've got real time departure information at your station.
+
+You can configure as many stations as you want: for example, home, work and the airport. The app will connect to the BART servers and pull the latest departure information -- the same information that is displayed on the BART website and the overhead departure boards at the station.
+
+This app is a free open-source project, and contains no ads. If you're a developer and would like to contribute, please feel free to submit a pull request: https://github.com/dordal/bartrt  If you're not a developer, but would still like to spread the word, please contact me (david -at- ordal.com) for a flyer that you can post at your local station.
