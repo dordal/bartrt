@@ -14,6 +14,7 @@ TO DO
 - Setup bartrt.com to redirect to the appropriate app store, depending on user agent
 - Look at the phonegap remote debugging (on device) instead of via ripple
 - Develop flyer for posting @ BART stations
+- Improve screenshots & description on the app store; look at keywords
 - Add Google App Analytics or possibly Mixpanel
 - Switch to simplified bootstrap, figure out release process with minified libraries. 
 - Release on Google Play & Windows Phone; try the Phonegap Build service
@@ -28,7 +29,9 @@ FUTURE FEATURES
 - Drag to reorder stations
 - Add a 'to' station to filter the list of trains
 - Add BART alert notifications
+- Setup welcome help screen or an overlay
 - automatic update feature ( every 30s or so? )
+- some sort of subtle 'please rate this app' reminder
 
 --------------------
 
