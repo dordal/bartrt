@@ -5,26 +5,30 @@ Angular JS w Phonegap & Bootstrap
 
 BUILD NOTES
 - When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the @grid-gutter-width = 20px instead of 30px. Also turn off all the jquery includes; those aren't needed
+- before launch, remember to change the <access origin="*" /> in config.xml
+- also switch to minified libraries
 
 TO DO
+- Move todos, etc. to a trello board? Or github issue tracker?
 - Develop new features ( see below )
 - Setup bartrt.com to redirect to the appropriate app store, depending on user agent
+- Look at the phonegap remote debugging (on device) instead of via ripple
 - Develop flyer for posting @ BART stations
 - Add Google App Analytics or possibly Mixpanel
-- 
+- Switch to simplified bootstrap, figure out release process with minified libraries. 
+- Release on Google Play & Windows Phone; try the Phonegap Build service
+- Look at a better build process. Possibly look here for ideas: https://github.com/calvinl/ng-phonegap
+- Write SCTO article
+- Create github readme
+- Develop testing framework and integrate into the build process
 
 FUTURE FEATURES
 - Pull to refresh
 - Nearby vs. Alphabetical Station List
 - Drag to reorder stations
-- Release on Google Play & Windows Phone; try the Phonegap Build service
 - Add a 'to' station to filter the list of trains
 - Add BART alert notifications
 - automatic update feature ( every 30s or so? )
-
-LAUNCH PREP
-- remember to change the <access origin="*" /> in config.xml
-- switch to minified libraries
 
 --------------------
 
