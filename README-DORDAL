@@ -6,6 +6,13 @@ Angular JS w Phonegap & Bootstrap
 BUILD NOTES
 - When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the @grid-gutter-width = 20px instead of 30px. Also turn off all the jquery includes; those aren't needed
 
+TO DO
+- Develop new features ( see below )
+- Setup bartrt.com to redirect to the appropriate app store, depending on user agent
+- Develop flyer for posting @ BART stations
+- Add Google App Analytics or possibly Mixpanel
+- 
+
 FUTURE FEATURES
 - Pull to refresh
 - Nearby vs. Alphabetical Station List
