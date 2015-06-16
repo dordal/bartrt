@@ -1,76 +1,66 @@
 BARTRT App
+----------
 
-Development Env
-Angular JS w Phonegap & Bootstrap
+DEVELOPMENT ENV
+---------------
+Phonegap w/ AngularJS & Bootstrap
+
+SETUP
+0. Install iOS Dev Tools, Android Dev environment, etc., as needed.
+1. Install Phonegap: http://phonegap.com/install/
+2. [Optional] Install the _new_ Ripple: http://www.raymondcamden.com/2013/11/05/Ripple-is-Reborn
+
+RUNNING
+Use the standard phonegap/ripple commands to build & run the app:
+phonegap platform add ios
+phonegap build ios -d
+phonegap emulate ios -d --target="iPhone-4s"
+phonegap run ios -d
+ripple emulate
+
+DEBUGGING
+There are three good ways to debug the app:
+- Run via ripple, and use the Chrome debug tools. Probably easiest for initial development.
+- Run via the iOS simulator, or on-device, and use Safari Remote Debugging ( Develop Menu ). Also easy for initial development.
+- Run via the Phonegap Developer App, using the 'phonegap serve' command. Note this only works with Phonegap > 5.X
 
 BUILD NOTES
 - When upgrading bootstrap, you have to compile a custom version with @grid-float-breakpoint = 0px and the @grid-gutter-width = 20px instead of 30px. Also turn off all the jquery includes; those aren't needed
 - before launch, remember to change the <access origin="*" /> in config.xml
 - also switch to minified libraries
 
-TO DO
-- Move todos, etc. to a trello board? Or github issue tracker?
-- Develop new features ( see below )
-- Setup bartrt.com to redirect to the appropriate app store, depending on user agent
-- Look at the phonegap remote debugging (on device) instead of via ripple
-- Develop flyer for posting @ BART stations
-- Improve screenshots & description on the app store; look at keywords
-- Add Google App Analytics or possibly Mixpanel
-- Switch to simplified bootstrap, figure out release process with minified libraries. 
-- Release on Google Play & Windows Phone; try the Phonegap Build service
-- Look at a better build process. Possibly look here for ideas: https://github.com/calvinl/ng-phonegap
-- Write SCTO article
-- Create github readme
-- Develop testing framework and integrate into the build process
 
-FUTURE FEATURES
-- Pull to refresh
-- Nearby vs. Alphabetical Station List
-- Drag to reorder stations
-- Add a 'to' station to filter the list of trains
-- Add BART alert notifications
-- Setup welcome help screen or an overlay
-- automatic update feature ( every 30s or so? )
-- some sort of subtle 'please rate this app' reminder
+CHANGE LOG
+----------
 
---------------------
+16 JUN 2015
+- Migrated all issues & feature requests from this document to Github Issue Tracker
 
-STATUS 06 APRIL 2015
-- Change name to 'Real Time Departures'
+18 APR 2015 - 1.0.1 Release
+- First release to the app store!
+
+06 APR 2015
+- Changed name to 'Real Time Departures'
 - Fix 'No Trains' layout bug
 - Add splash screen & icon
-- Update bootstrap and compile a min version
-- Figure out how to compile only for iOS and release on the app store
-- Write a good description; remember to say
-  - No Ads
-  - Open Source / How to contribute
-  - Contact me for a flyer for marketing ('Miss Your Train?')
+- Updated bootstrap
 
-STATUS 15 MARCH 2015
+15 MAR 2015
 - fixed most bugs; added better styling, refresh on resume, etc. etc. ... app is fairly stable now
-- need to update to the newest bootstrap, and probably compile a min version
-- still need to do an icon and a splash screen. Maybe a dark bart map for the splash screen?
-- pull to refresh? the button works for now though.
-- possibly look at using bower
-- on quick lookup screen, need to add a button for another quick lookup
+- Improved splash screen, but needs more work. Maybe a dark bart map for the splash screen?
 
-STATUS 7 Feb 2015 - Hackathon
-- all basic functionality working
+7 FEB 2015 - Hackathon
+- All basic functionality working
 - Needs styling, bug testing. See if I can figure out how to add a little color.
-- Ideally would also have drag & drop sort order for stations
-- Need to add loading states and automatic refresh
-- pull to refresh? but would be nice if header didn't pull down
-- error handling if API returns bad data
-- refresh button stays white for some reason
-- refresh on resume. see line 20 controllers.js for the first attempt
-- need to develop an icon
+- improved error handling if API returns bad data
+- added refresh on resume, but not working yet. see line 20 controllers.js for the first attempt
 
-STATUS 22 JUNE 2014
-- Am working on the config page. 
-- Basic idea is to only be able to add/remove from the list of stations on the station edit page. If you add a 
-  station, it takes you to a second 'station selector' page with all the stations listed. Also you can drag to rearrange
+22 JUN 2014
+- Work on the config page. Basic idea is to only be able to add/remove from the list of stations on the
+  station edit page. If you add a station, it takes you to a second 'station selector' page with all 
+  the stations listed.
 
-STATUS 2 Jan 2014
+02 JAN 2014 - Initial Work
 - Most basic functionality works. Can load station ETD data, etc.
 - Config sort of works... needs to have error checking, station deduplication, etc.
 - Bootstrap is installed and working, and some basic icons, but:
@@ -80,5 +70,4 @@ STATUS 2 Jan 2014
   - Need to figure out the status bar on iOS7; its sort of overlapping. Tried putting some code in config.php but it didn't really do the  job properly.
   - Need to do a loading state
   - Need to figure out what happens when an error occurs
-- Will need to get my own provisioning profile and iOS dev account at some point.
 
