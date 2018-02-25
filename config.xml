@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bartrt.app" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.bartrt.app" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>BART Departures</name>
     <description>
         BART Real Time Departures provides real time departure data at BART stations that you select.
@@ -8,12 +8,14 @@
         David Ordal
     </author>
     <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
-    <preference name="disallowoverscroll" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
@@ -22,63 +24,41 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-    <!-- target only handsets (e.g. iPhone) and not tablets (e.g. iPad) -->
     <preference name="target-device" value="handset" />
-    <!-- set the statusbar to match the app background using the statusbar plugin: https://github.com/apache/cordova-plugin-statusbar/ -->
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#222222" />
     <preference name="StatusBarStyle" value="lightcontent" />
-
     <splash src="www/res/screen/ios/screen-iphone-portrait.png" />
     <icon src="www/res/icon/ios/icon-60.png" />
-
     <platform name="ios">
-        <!--
-        <splash src="www/res/screen/ios/screen-ipad-landscape-2x.png" width="2048" height="1536"/>
-        <splash src="www/res/screen/ios/screen-ipad-landscape-2x.png" width="2048" height="1536"/>
-        <splash src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" height="768"/>
-        <splash src="www/res/screen/ios/screen-ipad-portrait.png" width="768" height="1024"/>
-        <splash src="www/res/screen/ios/screen-ipad-portrait-2x.png" width="1536" height="2048"/>
-        <splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
-        -->
-        <splash src="www/res/screen/ios/screen-iphone-portrait.png" width="320" height="480"/>
-        <splash src="www/res/screen/ios/screen-iphone-portrait@2x.png" width="640" height="960"/>
-        <splash src="www/res/screen/ios/screen-iphone-portrait-568h@2x.png" width="640" height="1136"/>
-        <splash src="www/res/screen/ios/screen-iphone-portrait-667h@2x.png" width="750" height="1334"/>
-        <splash src="www/res/screen/ios/screen-iphone-portrait-736h@3x.png" width="1242" height="2208"/>
-
-        <!-- iOS 8.0+ -->
-        <!-- iPhone 6 Plus  -->
-        <icon src="www/res/icon/os/icon-60@3x.png" width="180" height="180" />
-        <!-- iOS 7.0+ -->
-        <!-- iPhone / iPod Touch  -->
-        <icon src="www/res/icon/ios/icon-60.png" width="60" height="60" />
-        <icon src="www/res/icon/ios/icon-60@2x.png" width="120" height="120" />
-        <!-- iOS 6.1 -->
-        <!-- Spotlight Icon -->
-        <icon src="www/res/icon/ios/icon-40.png" width="40" height="40" />
-        <icon src="www/res/icon/ios/icon-40@2x.png" width="80" height="80" />
-        <!-- iPhone / iPod Touch -->
-        <icon src="www/res/icon/ios/icon-57.png" width="57" height="57" />
-        <icon src="www/res/icon/ios/icon-57@2x.png" width="114" height="114" />
-        <!-- iPhone Spotlight and Settings Icon -->
-        <icon src="www/res/icon/ios/icon-small.png" width="29" height="29" />
-        <icon src="www/res/icon/ios/icon-small@2x.png" width="58" height="58" />
-        <!-- iPad -->
-        <!--          
-        <icon src="res/ios/icon-76.png" width="76" height="76" />
-        <icon src="res/ios/icon-76@2x.png" width="152" height="152" />
-        <icon src="www/res/icon/ios/icon-72.png" width="72" height="72" />
-        <icon src="www/res/icon/ios/icon-72@2x.png" width="144" height="144" />
-        -->
-        <!-- iPad Spotlight and Settings Icon -->
-        <!--          
-        <icon src="res/ios/icon-50.png" width="50" height="50" />
-        <icon src="res/ios/icon-50@2x.png" width="100" height="100" />
-        -->
+        <splash height="480" src="www/res/screen/ios/screen-iphone-portrait.png" width="320" />
+        <splash height="960" src="www/res/screen/ios/screen-iphone-portrait@2x.png" width="640" />
+        <splash height="1136" src="www/res/screen/ios/screen-iphone-portrait-568h@2x.png" width="640" />
+        <splash height="1334" src="www/res/screen/ios/screen-iphone-portrait-667h@2x.png" width="750" />
+        <splash height="2208" src="www/res/screen/ios/screen-iphone-portrait-736h@3x.png" width="1242" />
+        <icon height="60" src="www/res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="www/res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="180" src="www/res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="40" src="www/res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="www/res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="www/res/icon/ios/icon-57.png" width="57" />
+        <icon height="114" src="www/res/icon/ios/icon-57@2x.png" width="114" />
+        <icon height="29" src="www/res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="www/res/icon/ios/icon-small@2x.png" width="58" />
     </platform>
-
     <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>    
 </widget>

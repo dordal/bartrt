@@ -7,7 +7,7 @@ Phonegap w/ AngularJS & Bootstrap
 
 SETUP
 0. Install iOS Dev Tools, Android Dev environment, etc., as needed.
-1. Install Phonegap: http://phonegap.com/install/
+1. Install Phonegap: npm install -g phonegap (Full details at http://phonegap.com/install/ )
 2. [Optional] Install the _new_ Ripple: http://www.raymondcamden.com/2013/11/05/Ripple-is-Reborn
 
 RUNNING
