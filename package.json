@@ -1,0 +1,13 @@
+{
+  "name": "com.bartrt.app",
+  "version": "1.0.2",
+  "displayName": "BART Departures",
+  "cordova": {
+    "platforms": [
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "cordova-ios": "~4.5.4"
+  }
+}
