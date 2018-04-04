@@ -33,6 +33,10 @@ BUILD NOTES
 CHANGE LOG
 ----------
 
+XX APRIL 2018
+- Updated the app to the latest Phonegap/Cordova
+- Updated design for iPhone X
+
 16 JUN 2015
 - Migrated all issues & feature requests from this document to Github Issue Tracker
 
